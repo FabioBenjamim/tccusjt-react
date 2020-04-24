@@ -1,16 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './login'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-       <h1>Hello World</h1>
-      </header>
-    </div>
-  );
-}
+class App extends Component{  
 
+  state = {
+    usuario : {
+      email: 'testandoProps',
+      senha: 'testandoProps'
+    }
+  }
+
+
+  render() {
+    return (
+      <Fragment>
+        <div className="body-login">
+          <Login usuario = { this.state.usuario }/>
+       </div>
+      </Fragment>
+
+    );
+  }
+}
 export default App;
