@@ -14,7 +14,7 @@ class Login extends Component{
   constructor(props){
     super(props)
     this.stateLogin = {
-          email: props.usuario.email,
+          email: '',
           senha: ''
     }
     this.state = this.stateLogin; 
@@ -29,7 +29,13 @@ class Login extends Component{
   }
 
   submitFormulario = () =>{
-    ApiService.fazerLogin()
+   ApiService.fazerLogin(JSON.stringify(this.state))
+   .then(res => {
+        if(res.ok){
+          alert("Redirecionando");
+        }else 
+          alert("Falha ao fazer Login");
+   });
   }
 
   render(){

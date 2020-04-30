@@ -42,6 +42,19 @@ a:link{
   font-weight: bold;
 }
 
+.text-cadastro{
+  text-align: center !important;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  height: 7px;
+
+}
+
+.logo-meio{
+  margin-top: 200px;
+}
+
 .text-barra{
   font-size: 15px;
   color: white;

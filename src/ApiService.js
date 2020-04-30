@@ -8,13 +8,11 @@ const ApiService = {
     },
 
     fazerLogin: conta =>{
-        return fetch('http://localhost:8000/api/autor', {
-                    method: 'GET', 
+        return fetch('http://localhost:8080/login/autentica', {
+                    method: 'POST', 
                     headers: {'content-type': 'application/json'},
-
+                    body: conta
                 })
-                .then(res => res.json())
-                .then(res => console.log(res.data));
     } 
 }
 export default ApiService;
