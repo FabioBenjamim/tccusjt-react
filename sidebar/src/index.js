@@ -3,19 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Cadastro from './cadastro';
-import HomePerfil from './homePerfil';
-
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/"  exact= { true } component= { App } />
-      <Route path="/cadastro"  exact= { true } component= { Cadastro } />
-      <Route path="/homePerfil"  exact= { true } component= { HomePerfil } />
-    </Switch>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

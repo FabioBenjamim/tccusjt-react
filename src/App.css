@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -13,6 +14,93 @@
   }
 }
 
+.background{
+  background-image: url('./images/back.jpg');
+}
+
+a:link{
+  text-decoration:none;
+  color:white;
+  }
+  
+  a:visited{
+  text-decoration:none;
+  color:white;
+  }
+  
+  a:hover{
+  text-decoration:none;
+  color: #7a1fa0;
+  }
+  
+  a:active{
+  text-decoration:none;
+  }
+
+.text{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.text-cadastro{
+  text-align: center !important;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  height: 7px;
+
+}
+
+.logo-meio{
+  margin-top: 200px;
+}
+
+.text-barra{
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  margin-right: 60px;
+  text-align: right !important;
+  border-bottom: 4px solid;
+  border-color: #7a1fa0;
+  width: 50px;
+  height: 7px;
+}
+
+.text-links{
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.text-rigth{
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 227px;
+  margin-top: 100px;
+}
+
+.botao{
+  width: 150px;
+    color: blanchedalmond;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    background-color: #7a1fa0;
+    font-size: 18px;
+}
+
+.botao-centro{
+  text-align: center;
+}
+
+.nome-empresa{
+  margin-left: 20%;
+  color: white;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,8 +112,28 @@
   color: white;
 }
 
+.bor-col{
+  border-color: #61dafb;
+  border-bottom: 10px;
+}
 .App-link {
   color: #61dafb;
+}
+
+.body-login{
+  background-image: url('./images/low-poly-1239778_1920.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 10%;
+  padding-bottom: 13%;
+}
+
+.body-cadastro{
+  background-image: url('./images/low-poly-1239778_1920.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 10%;
+  padding-bottom: 14.75%;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +144,96 @@
     transform: rotate(360deg);
   }
 }
+
+html,
+body {
+  margin: 0;
+}
+
+#App {
+  font-family: sans-serif;
+
+  /* Give app full page to work with */
+  height: 100vh;
+}
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: white;
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.iconUser {
+  height: 50px;
+  width: 50px; 
+  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-right: 10px;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
