@@ -50,6 +50,7 @@ class Login extends Component{
                                           email: this.props.usuario.email,
                                           senha: this.props.usuario.senha
                                         } }} className="text">CADASTRO</Link>
+                <Link to={{ pathname: '/homePerfil'}} className="text">  HOME</Link>                        
               </div>
           </div>
           <div className="">
