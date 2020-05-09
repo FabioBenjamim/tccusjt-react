@@ -7,16 +7,15 @@ class ListaTop5 extends Component{
     }
     render(){
         return(
-                <div className="">
-                    <div className="lista-top5 text-top5">
-                            <p>Ações mais rentaveis no mês</p>
-                            <p>top 5 rendimentos do mes</p>
-                            <p>top 5 rendimentos do mes</p>
-                            <p>top 5 rendimentos do mes</p>
-                            <p>top 5 rendimentos do mes</p>
-                            <p>top 5 rendimentos do mes</p>
-                    </div>
-                </div>
+            <div className="">
+            <div className="lista-top5 text-top5">
+                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li class="list-group-item">top 5 rendimentos do mes</li>
+            </div>
+        </div>
         );
     }
 

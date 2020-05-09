@@ -14,6 +14,17 @@
   }
 }
 
+.lista-top5{
+  background-color: white;
+  margin-top: 1%;
+  padding-bottom: 20px;
+  
+}
+
+.text-top5{
+text-align: center;
+}
+
 .text-over{
   text-overflow:    ellipsis;
 }
