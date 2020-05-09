@@ -32,13 +32,19 @@ class SimpleLineChart extends Component {
         <Line
           type='monotone'
           dataKey='pv'
-          stroke='#8884d8'
+          stroke='#0a0a0a'
           activeDot={{r: 8}}
           />
-        <CartesianGrid strokeDasharray='3 3'/>
+        <CartesianGrid 
+        strokeDasharray='3 3'
+        stroke='#0a0a0a'
+        />
         <Tooltip/>
-        <YAxis/>
-        <XAxis dataKey='name'/>
+        <YAxis
+        stroke='#0a0a0a'/>
+        <XAxis 
+        stroke='#0a0a0a'
+        dataKey='name'/>
         <Legend />
       </LineChart>
     );

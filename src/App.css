@@ -139,6 +139,12 @@ a:link{
   padding-bottom: 14.75%;
 }
 
+.body-homePerfil{
+  background-image: url('./images/low-poly-1239778_1920.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -235,7 +241,6 @@ p.blocktext {
 }
 
 .lista-top5{
-    background-color: white;
     border: 1px solid;
     border-color:black;
     margin-top: 10%;
@@ -243,8 +248,15 @@ p.blocktext {
     
 }
 
+.text-boas{
+  color: white;
+  font-weight: bold
+}
+
 .text-top5{
   text-align: center;
+  color: white;
+  font-weight: bold;
 }
 /* General sidebar styles */
 .bm-menu {

@@ -30,7 +30,7 @@ class homePerfil extends Component{
     }
 
 
-    /*componentDidMount(){
+    componentDidMount(){
         ApiService.buscarPerfil(this.props.location.state.email)
         .then(res => res.json())
         .then(res => {
@@ -41,9 +41,10 @@ class homePerfil extends Component{
           sexo: res.sexo,
           telefone: res.telefone});
         });
-    }*/
+    }
     render(){
     return(
+      <div className="body-homePerfil">
         <div>
           <div className="row">
             <div className="col-12">
@@ -52,7 +53,9 @@ class homePerfil extends Component{
         </div>
         <div id="page-wrap">
           <div>
-            <h1>Bem vindo {this.state.nome}</h1>
+            <div className="text-boas">
+              <h1>Bem vindo {this.state.nome}</h1>
+            </div>
           </div>
         </div>
         <div className="row">
@@ -65,6 +68,7 @@ class homePerfil extends Component{
             <div className="col-4">
             <ListaTop5 />
             </div>
+        </div>
         </div>
         </div>
     );
