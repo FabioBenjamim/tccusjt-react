@@ -41,10 +41,10 @@ class Cadastro extends Component{
   submitFormulario = () =>{
     ApiService.cadastraConta(JSON.stringify(
         {
-          cpf: this.state.cpf,
           email: this.state.email,
           senha: this.state.senha,
           perfil: {
+            cpf: this.state.cpf,
             nome: this.state.nome,
             estado: this.state.estado,
             endereco: this.state.endereco,
@@ -81,14 +81,6 @@ class Cadastro extends Component{
                   autoFocus
                   name="email" 
                   placeholder="Email"
-                  autoComplete="off"
-                  onChange= { this.escutadorDeInput }
-                  />
-                  <input className=" mt-5 form-control border-top-0 border-left-0 border-right-0 bor-col"
-                type="text"
-                  autoFocus
-                  name="cpf" 
-                  placeholder="CPF"
                   autoComplete="off"
                   onChange= { this.escutadorDeInput }
                   />
@@ -154,6 +146,17 @@ class Cadastro extends Component{
                     autoComplete="off"
                     onChange= { this.escutadorDeInput }
                     />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                  <input className=" mt-5 form-control border-top-0 border-left-0 border-right-0 bor-col"
+                    type="text"
+                    name="cpf" 
+                    placeholder="CPF"
+                    autoComplete="off"
+                    onChange= { this.escutadorDeInput }
+                  />
                   </div>
                 </div>
                 <div className="row">

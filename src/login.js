@@ -15,7 +15,8 @@ class Login extends Component{
     super(props)
     this.stateLogin = {
           email: '',
-          senha: ''
+          senha: '',
+          redirect: false
     }
     this.state = this.stateLogin; 
   }
@@ -33,24 +34,28 @@ class Login extends Component{
    .then(res => {
         if(res.ok){
           alert("Redirecionando");
+          this.props.usuario.email = this.state.email
+          this.props.usuario.senha = this.state.senha
+          this.setState({ redirect : true })
         }else 
           alert("Falha ao fazer Login");
    });
   }
 
   render(){
+    if(this.state.redirect) {
+      return <Redirect to={{ pathname: '/homePerfil',
+      state: {
+        email: this.props.usuario.email
+      } }} />
+    }else
     return(
     <div className="container">
         <div className="">
           <div className="row">
               <div className="col-1">
                 <Link to="/" className="text-barra">LOGIN</Link>
-                <Link to={{ pathname: '/cadastro',
-                                        state: {
-                                          email: this.props.usuario.email,
-                                          senha: this.props.usuario.senha
-                                        } }} className="text">CADASTRO</Link>
-                <Link to={{ pathname: '/homePerfil'}} className="text">  HOME</Link>                        
+                <Link to={{ pathname: '/cadastro' } } className="text">CADASTRO</Link>                        
               </div>
           </div>
           <div className="">

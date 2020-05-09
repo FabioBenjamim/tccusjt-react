@@ -1,14 +1,29 @@
-import React from 'react';
 import './App.css';
 import { fallDown as Menu } from 'react-burger-menu';
+import React, { Component } from 'react';
+import logo from './images/Logo.png';
 
-export default props => {
-  return (
-    <Menu>
+class SideBar extends Component {
+    constructor(props){
+      super(props)
+      this.state = {
+        nome: '',
+        estado: '',
+        endereco: '',
+        idade: '',
+        sexo: '',
+        telefone: ''
+      }
+    }
+
+    render(){
+      return(
+        <div className="row">
+        <Menu>
       <div>
-        <img className='iconUser' src="https://cdn0.iconfinder.com/data/icons/star-wars-3/154/droid-helmet-soldier-star-wars-512.png" />
-        <a className="menu-item" href="/">
-          Nome
+        <img className='iconUser displayed' src={ logo }/>
+        <a className="menu-item text-menu-bar" href="/" >
+        <p className="text-center">Nome: {this.props.perfil.nome}</p>
         </a>
       </div>
       <a className="menu-item" href="/">
@@ -27,5 +42,10 @@ export default props => {
         Sair
       </a>
     </Menu>
-  );
-};
+    </div>
+      );
+    }
+    
+}
+
+export default SideBar;

@@ -13,6 +13,12 @@ const ApiService = {
                     headers: {'content-type': 'application/json'},
                     body: conta
                 })
-    } 
+    },
+    buscarPerfil: email =>{
+        return fetch(`http://localhost:8080/login?email=${email}`, {
+                    method: 'GET', 
+                    headers: {'content-type': 'application/json'},
+                })
+    }
 }
 export default ApiService;
