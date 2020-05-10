@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+.cardInvestimento {
+  height: 500px;
+}
 .noIntro {
   background-color: lightseagreen;
 }

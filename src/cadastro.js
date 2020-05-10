@@ -161,7 +161,7 @@ class Cadastro extends Component{
                 </div>
                 <div className="row">
                   <div className="col botao-centro">
-                    <button onClick={ this.submitFormulario } className="botao mt-5">CADASTRAR</button>
+                    <button onClick={ this.submitFormulario } className="btn btn-dark botao mt-5">CADASTRAR</button>
                   </div>
                 </div>
               </div>
