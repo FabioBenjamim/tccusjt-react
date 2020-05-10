@@ -14,8 +14,9 @@ class Login extends Component{
   constructor(props){
     super(props)
     this.stateLogin = {
-          email: props.usuario.email,
-          senha: ''
+          email: '',
+          senha: '',
+          redirect: false
     }
     this.state = this.stateLogin; 
   }
@@ -29,21 +30,32 @@ class Login extends Component{
   }
 
   submitFormulario = () =>{
-    ApiService.fazerLogin()
+   ApiService.fazerLogin(JSON.stringify(this.state))
+   .then(res => {
+        if(res.ok){
+          alert("Redirecionando");
+          this.props.usuario.email = this.state.email
+          this.props.usuario.senha = this.state.senha
+          this.setState({ redirect : true })
+        }else 
+          alert("Falha ao fazer Login");
+   });
   }
 
   render(){
+    if(this.state.redirect) {
+      return <Redirect to={{ pathname: '/homePerfil',
+      state: {
+        email: this.props.usuario.email
+      } }} />
+    }else
     return(
     <div className="container">
         <div className="">
           <div className="row">
               <div className="col-1">
                 <Link to="/" className="text-barra">LOGIN</Link>
-                <Link to={{ pathname: '/cadastro',
-                                        state: {
-                                          email: this.props.usuario.email,
-                                          senha: this.props.usuario.senha
-                                        } }} className="text">CADASTRO</Link>
+                <Link to={{ pathname: '/cadastro' } } className="text">CADASTRO</Link>                        
               </div>
           </div>
           <div className="">
@@ -67,11 +79,11 @@ class Login extends Component{
                 <a className="text-links" href="/">ESQUECI MINHA SENHA</a>
                 <div className="row">
                   <div className="col botao-centro">
-                    <button onClick={this.submitFormulario} className="botao mt-5">ENTRAR</button>
+                    <button onClick={this.submitFormulario} className="btn btn-dark botao mt-5">ENTRAR</button>
                   </div>
                 </div>
               </div>
-              <div className="col-5">
+              <div className="col-5 logo-meio">
                   <img src={ image } alt="Logo da empresa" style={ style }></img>
                   <p className="nome-empresa">ALGO ALTAMENTE PERSUASIVO E MOTIVACIONAL</p>
               </div>

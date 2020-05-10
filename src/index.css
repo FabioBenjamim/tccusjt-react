@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cardInvestimento {
+  height: 500px;
+}
+.noIntro {
+  background-color: lightseagreen;
+}
+
+
+.intro {
+  background-color: white;
+}
+
+.top5div {
+  margin-top: 80px;
+  margin-right: 40px;
+}
+
+.coroa {
+  margin-top: 10px;
+}
+
+.iconTop5 {
+  height: 150px;
+  width: 150px; 
+}
+
+.headerTop5 {
+  text-align: center;
+}

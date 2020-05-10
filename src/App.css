@@ -14,6 +14,20 @@
   }
 }
 
+.lista-top5{
+  background-color: white;
+  margin-top: 1%;
+  padding-bottom: 20px;
+  
+}
+
+.text-top5{
+text-align: center;
+}
+
+.text-over{
+  text-overflow:    ellipsis;
+}
 .background{
   background-image: url('./images/back.jpg');
 }
@@ -42,6 +56,21 @@ a:link{
   font-weight: bold;
 }
 
+.text-cadastro{
+  text-align: center !important;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  height: 7px;
+
+}
+
+.logo-meio{
+  margin-left: 16%;
+  margin-top: 12%;
+}
+
+
 .text-barra{
   font-size: 15px;
   color: white;
@@ -68,15 +97,11 @@ a:link{
 }
 
 .botao{
-  width: 150px;
     color: blanchedalmond;
-    font-weight: bold;
-    text-align: center;
-    padding: 15px 20px;
-    border: 1px solid #eee;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     background-color: #7a1fa0;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .botao-centro{
@@ -108,19 +133,29 @@ a:link{
 }
 
 .body-login{
-  background-image: url('./images/low-poly-1239778_1920.jpg');
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 10%;
   padding-bottom: 13%;
 }
 
+.welcome {
+  text-align: center;
+  color: #24ae4e;
+}
+
 .body-cadastro{
-  background-image: url('./images/low-poly-1239778_1920.jpg');
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 10%;
   padding-bottom: 14.75%;
+}
+
+.body-homePerfil{
+  height: 1000px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @keyframes App-logo-spin {
@@ -130,4 +165,160 @@ a:link{
   to {
     transform: rotate(360deg);
   }
+}
+
+html,
+body {
+  margin: 0;
+  background-image: url('./images/1.jpg');
+}
+
+#App {
+  font-family: sans-serif;
+
+  /* Give app full page to work with */
+  height: 100vh;
+}
+
+#page-wrap {
+  text-align: center;
+
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: white;
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
+
+.text-menu-bar{
+  font-size: 12 px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.iconUser {
+  height: 80px;
+  width: 100px; 
+}
+p.blocktext {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grafico {
+  width: 105%;
+}
+
+.searchPosition {
+  padding-top: 5px;
+  left: 85%;
+  position: absolute;
+}
+
+.topMargin {
+  margin-left: 16%;
+}
+
+.grafico2 {
+  width: 77%;
+}
+
+.graficos{
+  padding-left: 17%;
+  text-align: center;
+}
+
+.graficos2 {
+  padding-left: 5%;
+}
+
+.top5 {
+  width: 100%;
+}
+
+.lista-top5{
+    border: 1px solid;
+    border-color:lightgray;
+    padding-bottom: 20px;
+    
+}
+
+.text-boas{
+  color: white;
+  font-weight: bold
+}
+
+.text-top5{
+  text-align: center;
+  color: #212529;
+  font-weight: bold;
+}
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.labelgraph{
+  text-align: center;
 }

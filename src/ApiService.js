@@ -8,13 +8,17 @@ const ApiService = {
     },
 
     fazerLogin: conta =>{
-        return fetch('http://localhost:8000/api/autor', {
+        return fetch('http://localhost:8080/login/autentica', {
+                    method: 'POST', 
+                    headers: {'content-type': 'application/json'},
+                    body: conta
+                })
+    },
+    buscarPerfil: email =>{
+        return fetch(`http://localhost:8080/login?email=${email}`, {
                     method: 'GET', 
                     headers: {'content-type': 'application/json'},
-
                 })
-                .then(res => res.json())
-                .then(res => console.log(res.data));
-    } 
+    }
 }
 export default ApiService;
