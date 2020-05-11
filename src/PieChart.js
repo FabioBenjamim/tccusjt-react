@@ -12,7 +12,7 @@ class PieChart extends Component{
              ],   
              datasets:[
                  {
-                    label:'Teste',
+                    label:'R$',
                     data:[
                         13,
                         61,
@@ -41,7 +41,7 @@ class PieChart extends Component{
 
     render(){
         return(
-            <div className="piechart">
+            <div className="piechart grafico00">
                 <Pie
                     data={this.state.chartData}
                     options={{

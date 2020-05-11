@@ -63,14 +63,14 @@ class homePerfil extends Component {
         </form>
         <div id="page-wrap">
           <div>
-            <h1 className="welcome">Bem vindo {this.state.nome}</h1>
+            <h1 className="welcome">Bem vindo, {this.state.nome}</h1>
           </div>
         </div>
         <div class="row">
           <div class="col-6 graficos mt-5">
             <div class="card car grafico">
               <h5 class="card-header labelgraph">Rendimento total</h5>
-              <div class="card-body">
+              <div class="card-body grafico00">
                 <PieChart />
               </div>
             </div>
@@ -86,7 +86,7 @@ class homePerfil extends Component {
         </div>
         <div class="col-9 topMargin mt-5">
           <div class="card top5">
-            <h5 class="card-header topHeader labelgraph">Top 5 Investimentos</h5>
+            <h5 class="card-header topHeader labelgraph">Top 5 Investimentos para iniciantes</h5>
             <img className='iconTop5 displayed coroa' src={top5} />
             <div class="card-body">
               <ListaTop5 />

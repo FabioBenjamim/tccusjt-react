@@ -9,11 +9,11 @@ class ListaTop5 extends Component{
         return(
             <div className="">
             <div className="lista-top5 text-top5">
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li class="list-group-item">Fundos de investimento</li>
+                <li class="list-group-item">LCI – Letra de Crédito Imobilário</li>
+                <li class="list-group-item">CDB – Certificados de Depósito Bancário</li>
+                <li class="list-group-item">Tesouro direto</li>
+                <li class="list-group-item">Caderneta de Poupança</li>
             </div>
         </div>
         );

@@ -140,6 +140,9 @@ a:link{
 }
 
 .welcome {
+
+  font-size: 400%;
+  font-family: monospace;
   text-align: center;
   color: #24ae4e;
 }
@@ -241,8 +244,8 @@ body {
 }
 
 .iconUser {
-  height: 80px;
-  width: 100px; 
+  height: 80%;
+  width: 80%; 
 }
 p.blocktext {
   margin-left: auto;
@@ -260,6 +263,7 @@ p.blocktext {
 }
 
 .topMargin {
+  opacity: 0.9;
   margin-left: 16%;
 }
 
@@ -268,11 +272,13 @@ p.blocktext {
 }
 
 .graficos{
+  opacity: 0.9;
   padding-left: 17%;
   text-align: center;
 }
 
 .graficos2 {
+  opacity: 0.9;
   padding-left: 5%;
 }
 
