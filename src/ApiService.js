@@ -19,6 +19,14 @@ const ApiService = {
                     method: 'GET', 
                     headers: {'content-type': 'application/json'},
                 })
+    },
+
+    buscarInvestimentos: () => {
+        return fetch('http://localhost:8080/investimento/consultar',{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
     }
 }
 export default ApiService;

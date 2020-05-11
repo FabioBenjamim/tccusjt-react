@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Cadastro from './cadastro';
 import HomePerfil from './homePerfil';
+import meuInvestimento from './meuInvestimento';
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="/"  exact= { true } component= { App } />
       <Route path="/cadastro"  exact= { true } component= { Cadastro } />
       <Route path="/homePerfil"  exact= { true } component= { HomePerfil } />
+      <Route path="/meuInvestimento"  exact= { true } component= { meuInvestimento } />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

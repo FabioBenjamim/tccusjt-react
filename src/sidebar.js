@@ -2,6 +2,7 @@ import './App.css';
 import { fallDown as Menu } from 'react-burger-menu';
 import React, { Component } from 'react';
 import logo from './images/Logo.png';
+import { Link, Redirect} from 'react-router-dom';
 
 class SideBar extends Component {
     constructor(props){
@@ -30,17 +31,23 @@ class SideBar extends Component {
         Home
       </a>
 
-      <a className="menu-item" href="/laravel">
+      <Link className="menu-item" to={{ pathname: '/homePerfil',
+      state: {
+        email: this.props.email
+      } }}>
         Minha Conta
-      </a>
+      </Link>
 
-      <a className="menu-item" href="/angular">
+      <Link className="menu-item" to={{ pathname: '/meuInvestimento',
+      state: {
+        email: this.props.email
+      } }}>
         Meus Investimentos
-      </a>
+      </Link>
 
-      <a className="menu-item" href="/react">
+      <Link className="menu-item" to="/">
         Sair
-      </a>
+      </Link>
     </Menu>
     </div>
       );

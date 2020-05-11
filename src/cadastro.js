@@ -56,6 +56,7 @@ class Cadastro extends Component{
         .then(res =>{
           if(res.ok){
             alert("conta criada com sucesso");
+            return <Redirect to="/"></Redirect>
           }else
             alert("erro ao tentar criar a conta");
         })
@@ -161,7 +162,7 @@ class Cadastro extends Component{
                 </div>
                 <div className="row">
                   <div className="col botao-centro">
-                    <button onClick={ this.submitFormulario } className="botao mt-5">CADASTRAR</button>
+                    <button onClick={ this.submitFormulario } className="btn btn-dark botao mt-5">CADASTRAR</button>
                   </div>
                 </div>
               </div>
