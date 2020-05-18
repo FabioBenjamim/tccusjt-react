@@ -21,6 +21,13 @@
   
 }
 
+.cardSugestao{
+  opacity: 0.95;
+  top: 2%;
+  left: 12%;
+  width: 70%;
+}
+
 .text-top5{
 text-align: center;
 }
@@ -241,8 +248,8 @@ body {
 }
 
 .iconUser {
-  height: 80px;
-  width: 100px; 
+  height: 100%;
+  width: 70%; 
 }
 p.blocktext {
   margin-left: auto;
@@ -251,6 +258,11 @@ p.blocktext {
 
 .grafico {
   width: 105%;
+}
+
+.grafico3 {
+  width: 105%;
+  height: 100%;
 }
 
 .searchPosition {
@@ -278,7 +290,7 @@ p.blocktext {
 
 
 .top5 {
-  width: 100%;
+  width: 77%;
 }
 
 .lista-top5{

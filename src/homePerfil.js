@@ -52,12 +52,12 @@ class homePerfil extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email = { this.props.location.state.email }/>
+            <SideBar perfil={this.state} email={this.props.location.state.email} />
           </div>
         </div>
         <form className="form-inline my-2 my-lg-0 searchPosition">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div id="page-wrap">
           <div>
@@ -82,12 +82,22 @@ class homePerfil extends Component {
             </div>
           </div>
         </div>
-        <div className="col-9 topMargin mt-5">
-          <div className="card top5">
-            <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
-            <img className='iconTop5 displayed coroa' src={top5} />
-            <div className="card-body">
-              <ListaTop5 />
+        <div className="row">
+          <div className="col-6 graficos mt-5">
+            <div className="card car grafico3">
+              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <div className="card-body">
+                <PieChart />
+              </div>
+            </div>
+          </div>
+          <div className="col-6 graficos2 mt-5">
+            <div className="card top5">
+              <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
+              <img className='iconTop5 displayed coroa' src={top5} />
+              <div className="card-body">
+                <ListaTop5 />
+              </div>
             </div>
           </div>
         </div>

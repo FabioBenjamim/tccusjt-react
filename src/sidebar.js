@@ -45,6 +45,13 @@ class SideBar extends Component {
         Meus Investimentos
       </Link>
 
+      <Link className="menu-item" to={{ pathname: '/sugestaoInvestimento',
+      state: {
+        email: this.props.email
+      } }}>
+        Sugestão de Investimentos
+      </Link>
+
       <Link className="menu-item" to="/">
         Sair
       </Link>
