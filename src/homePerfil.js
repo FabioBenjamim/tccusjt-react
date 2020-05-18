@@ -3,10 +3,10 @@ import './App.css';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
 import ListaTop5 from './ListaTop5';
-import SimpleLineChart from './SimpleLineChart';
 import './index.css';
 import top5 from './images/top5.png';
-import investimento1 from './images/investimento1.jpg'
+import LineChart from './LineChart';
+import PieChart from './PieChart';
 
 
 
@@ -50,45 +50,58 @@ class homePerfil extends Component {
   render() {
     return (
       <div className="body-homePerfil">
-        <div>
-          <div className="row">
-            <div className="col-12">
-              <SideBar perfil={this.state} />
-            </div>
+        <div className="row">
+          <div className="col-12">
+            <SideBar perfil={this.state} email={this.props.location.state.email} />
           </div>
-          <div id="page-wrap">
-            <div>
-              <h1>Bem vindo {this.state.nome}</h1>
-            </div>
+        </div>
+        <form className="form-inline my-2 my-lg-0 searchPosition">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div id="page-wrap">
+          <div>
+            <h1 className="welcome">Bem vindo {this.state.nome}</h1>
           </div>
-          <div class="row">
-            <div class="col">
-              <div class="col mb-4">
-                <div class="card mt-5 ml-5">
-                  <img className='card-img-top' src={investimento1} />
-                </div>
-                <div class="card mt-5 ml-5">
-                  <img className='card-img-top' src={investimento1} />
-                </div>
+        </div>
+        <div className="row">
+          <div className="col-6 graficos mt-5">
+            <div className="card car grafico">
+              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <div className="card-body">
+                <PieChart />
               </div>
             </div>
-            <div class="col-5 intro">
-              <div className="graficos">
-                <SimpleLineChart />
-                <SimpleLineChart />
-              </div>
-            </div>
-            <div class="col top5div">
-              <div class="card">
-                <img className='iconTop5 displayed coroa' src={top5} />
-                <div class="card-body">
-                  <ListaTop5 />
-                </div>
+          </div>
+          <div className="col-6 graficos2 mt-5">
+            <div className="card car grafico2">
+              <h5 className="card-header labelgraph">Investimento mais rentável</h5>
+              <div className="card-body">
+                <LineChart />
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div className="row">
+          <div className="col-6 graficos mt-5">
+            <div className="card car grafico3">
+              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <div className="card-body">
+                <PieChart />
+              </div>
+            </div>
+          </div>
+          <div className="col-6 graficos2 mt-5">
+            <div className="card top5">
+              <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
+              <img className='iconTop5 displayed coroa' src={top5} />
+              <div className="card-body">
+                <ListaTop5 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
     );
   }
 }

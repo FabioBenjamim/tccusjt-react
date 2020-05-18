@@ -79,11 +79,11 @@ class Login extends Component{
                 <a className="text-links" href="/">ESQUECI MINHA SENHA</a>
                 <div className="row">
                   <div className="col botao-centro">
-                    <button onClick={this.submitFormulario} className="botao mt-5">ENTRAR</button>
+                    <button onClick={this.submitFormulario} className="btn btn-dark botao mt-5">ENTRAR</button>
                   </div>
                 </div>
               </div>
-              <div className="col-5">
+              <div className="col-5 logo-meio">
                   <img src={ image } alt="Logo da empresa" style={ style }></img>
                   <p className="nome-empresa">ALGO ALTAMENTE PERSUASIVO E MOTIVACIONAL</p>
               </div>

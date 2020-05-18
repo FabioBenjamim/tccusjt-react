@@ -9,11 +9,11 @@ class ListaTop5 extends Component{
         return(
             <div className="">
             <div className="lista-top5 text-top5">
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
-                <li class="list-group-item">top 5 rendimentos do mes</li>
+                <li className="list-group-item">top 5 rendimentos do mes</li>
+                <li className="list-group-item">top 5 rendimentos do mes</li>
+                <li className="list-group-item">top 5 rendimentos do mes</li>
+                <li className="list-group-item">top 5 rendimentos do mes</li>
+                <li className="list-group-item">top 5 rendimentos do mes</li>
             </div>
         </div>
         );

@@ -21,6 +21,13 @@
   
 }
 
+.cardSugestao{
+  opacity: 0.95;
+  top: 2%;
+  left: 12%;
+  width: 70%;
+}
+
 .text-top5{
 text-align: center;
 }
@@ -66,8 +73,10 @@ a:link{
 }
 
 .logo-meio{
-  margin-top: 200px;
+  margin-left: 16%;
+  margin-top: 12%;
 }
+
 
 .text-barra{
   font-size: 15px;
@@ -95,15 +104,11 @@ a:link{
 }
 
 .botao{
-  width: 150px;
     color: blanchedalmond;
-    font-weight: bold;
-    text-align: center;
-    padding: 15px 20px;
-    border: 1px solid #eee;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     background-color: #7a1fa0;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .botao-centro{
@@ -135,15 +140,18 @@ a:link{
 }
 
 .body-login{
-  background-image: url('./images/low-poly-1239778_1920.jpg');
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 10%;
   padding-bottom: 13%;
 }
 
+.welcome {
+  text-align: center;
+  color: #24ae4e;
+}
+
 .body-cadastro{
-  background-image: url('./images/low-poly-1239778_1920.jpg');
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 10%;
@@ -151,7 +159,8 @@ a:link{
 }
 
 .body-homePerfil{
-  background-image: url('./images/low-poly-1239778_1920.jpg');
+  height: 1000px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -168,6 +177,7 @@ a:link{
 html,
 body {
   margin: 0;
+  background-image: url('./images/1.jpg');
 }
 
 #App {
@@ -238,23 +248,54 @@ body {
 }
 
 .iconUser {
-  height: 80px;
-  width: 100px; 
+  height: 100%;
+  width: 70%; 
 }
 p.blocktext {
   margin-left: auto;
   margin-right: auto;
 }
 
+.grafico {
+  width: 105%;
+}
+
+.grafico3 {
+  width: 105%;
+  height: 100%;
+}
+
+.searchPosition {
+  padding-top: 5px;
+  left: 85%;
+  position: absolute;
+}
+
+.topMargin {
+  margin-left: 16%;
+}
+
+.grafico2 {
+  width: 77%;
+}
+
 .graficos{
-  margin-left: 20%;
-  margin-top: 5%;
+  padding-left: 17%;
+  text-align: center;
+}
+
+.graficos2 {
+  padding-left: 5%;
+}
+
+
+.top5 {
+  width: 77%;
 }
 
 .lista-top5{
     border: 1px solid;
-    border-color:black;
-    margin-top: 10%;
+    border-color:lightgray;
     padding-bottom: 20px;
     
 }
@@ -266,7 +307,7 @@ p.blocktext {
 
 .text-top5{
   text-align: center;
-  color: white;
+  color: #212529;
   font-weight: bold;
 }
 /* General sidebar styles */
@@ -291,3 +332,6 @@ p.blocktext {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.labelgraph{
+  text-align: center;
+}
