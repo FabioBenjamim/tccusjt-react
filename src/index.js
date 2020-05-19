@@ -7,6 +7,7 @@ import Cadastro from './cadastro';
 import HomePerfil from './homePerfil';
 import meuInvestimento from './meuInvestimento';
 import sugestaoInvestimento from './sugestaoInvestimento';
+import investimentoSeguro from './investimentoSeguro';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="/homePerfil"  exact= { true } component= { HomePerfil } />
       <Route path="/meuInvestimento"  exact= { true } component= { meuInvestimento } />
       <Route path="/sugestaoInvestimento"  exact= { true } component= { sugestaoInvestimento } />
+      <Route path="/investimentoSeguro"  exact= { true } component= { investimentoSeguro } />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
