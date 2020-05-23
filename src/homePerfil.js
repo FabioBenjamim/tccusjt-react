@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
@@ -7,15 +7,6 @@ import './index.css';
 import top5 from './images/top5.png';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
-
-
-
-var style = {
-  width: '80%',
-  heigth: '80%',
-  marginLeft: '20%'
-}
-
 
 class homePerfil extends Component {
 

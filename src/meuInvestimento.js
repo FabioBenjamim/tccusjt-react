@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
 import Tabela from './corpoTabela';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class meuInvestimento extends Component {
     constructor(props) {
@@ -13,8 +14,9 @@ class meuInvestimento extends Component {
             idade: '',
             sexo: '',
             telefone: '',
-            autores: [
+            investimentos: [
             ],
+            descricao: 'nulo'
         }
     }
 
@@ -31,11 +33,26 @@ class meuInvestimento extends Component {
                     telefone: res.telefone
                 });
             });
-            ApiService.buscarInvestimentos(1)
-            .then(res => {
-                console.log(res)
-                this.setState({autores: [...this.state.autores, ...res]})
-            })
+        ApiService.buscarInvestimentos(15)
+        .then(res => {
+            console.log(res)
+            this.setState({ investimentos: [...this.state.investimentos, ...res] })
+            console.log(this.state.investimentos)
+            console.log(res)
+        })
+    }
+
+    setaDescricao = linha =>{
+        this.setState({  descricao: linha.valor });
+    }
+
+    removeAutor = (investimentoss, id) => {
+
+        const { investimentos } = this.state;
+
+        const investimentosAtualizado = investimentos.filter(investimento => {
+            return investimento.id !== id
+        })
     }
 
     alertDescrição = () => {
@@ -45,6 +62,7 @@ class meuInvestimento extends Component {
     render() {
         return (
             <Fragment>
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
                 <SideBar perfil={this.state} email={this.props.location.state.email} />
                 <div className="row">
                     <div className="col-10 graficos mt-5">
@@ -59,9 +77,10 @@ class meuInvestimento extends Component {
                                             <th scope="col-3">data inclusão</th>
                                             <th scope="col">Tipo Investimento</th>
                                             <th scope="col-3">descrição</th>
+                                            <th scope="col-3">remover</th>
                                         </tr>
                                     </thead>
-                                    <Tabela autores={this.state.autores} />
+                                    <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor}  setaDescricao = { this.setaDescricao }/>
                                 </table>
                                 <div className="">
                                     <div className="row mt-5">
@@ -106,6 +125,24 @@ class meuInvestimento extends Component {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                            {this.state.descricao}
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

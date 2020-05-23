@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import { Link, Redirect } from 'react-router-dom';
@@ -18,6 +19,17 @@ var style = {
 }
 
 
+=======
+import React, { Component } from 'react';
+import './App.css';
+import { Link } from 'react-router-dom';
+import SideBar from './sidebar';
+import ApiService from './ApiService';
+import './index.css';
+import LineChart from './LineChart';
+import PieChart from './PieChart';
+
+>>>>>>> Stashed changes
 class sugestaoInvestimento extends Component {
 
   constructor(props) {
@@ -67,12 +79,17 @@ class sugestaoInvestimento extends Component {
         </div>
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
+<<<<<<< Updated upstream
             <button type="button" class="btn btn-dark ml-3"><Link to="/" className="text">Investimento que juros mais subiram</Link></button>
             <button type="button" class="btn btn-dark ml-3">
               <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email: this.props.email } }}>
                 Investimento que os juros se manteve
               </Link>
             </button>
+=======
+             <button type="button" class="btn btn-dark ml-3"><Link to="/" className="text">Investimento que juros mais subiram</Link></button>
+            <button type="button" class="btn btn-dark ml-3"><Link to={{ pathname: '/cadastro' } } className="text">Investimento que os juros se manteve</Link></button>
+>>>>>>> Stashed changes
           </div>
           <div class="card-body">
             <div className="row">

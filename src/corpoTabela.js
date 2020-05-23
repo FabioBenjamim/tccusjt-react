@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
+
+
 const TableBody = props =>{
     
-    const linhas = props.autores.map((linha)=>{
+    const linhas = props.investimentos.map((linha)=>{
        return( 
        <tr key={linha.id}>
            <th scope="row">{linha.id}</th>
             <td>{linha.valor}</td>
             <td>{linha.dataInclusao}</td>
             <td>XXXXXXXX</td>
-            <td><button  onClick= { () =>{
-                alert(linha.valor)
-            } } className="btn btn-dark ">Descrição</button></td>
+            <td><button type="button"  onClick= { () =>{props.setaDescricao(linha) }} class="btn btn-dark" data-toggle="modal" data-target="#staticBackdrop">descrição</button></td>
+            <td><button  onClick= { () => props.removeAutor(linha, linha.id)} className="btn btn-dark ">Remover</button></td>
         </tr>
        );
     });
@@ -28,11 +29,11 @@ class Tabela extends Component{
     
 
     render(){
-        const { autores } = this.props;
+        const { investimentos, removeAutor, setaDescricao } = this.props;
         
         return(
 
-        <TableBody autores={autores} />
+        <TableBody investimentos={ investimentos } removeAutor = { removeAutor } setaDescricao = { setaDescricao }/>
         );
     }
 
