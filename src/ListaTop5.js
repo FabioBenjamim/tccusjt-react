@@ -2,9 +2,6 @@ import './App.css';
 import React, { Component } from 'react';
 
 class ListaTop5 extends Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         return(
             <div className="">

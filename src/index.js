@@ -7,7 +7,11 @@ import Cadastro from './cadastro';
 import HomePerfil from './homePerfil';
 import meuInvestimento from './meuInvestimento';
 import sugestaoInvestimento from './sugestaoInvestimento';
+<<<<<<< Updated upstream
 import investimentoSeguro from './investimentoSeguro';
+=======
+
+>>>>>>> Stashed changes
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 ReactDOM.render(
@@ -18,7 +22,10 @@ ReactDOM.render(
       <Route path="/homePerfil"  exact= { true } component= { HomePerfil } />
       <Route path="/meuInvestimento"  exact= { true } component= { meuInvestimento } />
       <Route path="/sugestaoInvestimento"  exact= { true } component= { sugestaoInvestimento } />
+<<<<<<< Updated upstream
       <Route path="/investimentoSeguro"  exact= { true } component= { investimentoSeguro } />
+=======
+>>>>>>> Stashed changes
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
