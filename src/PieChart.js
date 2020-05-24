@@ -4,33 +4,7 @@ import {Pie} from 'react-chartjs-2';
 class PieChart extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            chartData:{
-             labels:[
-                'Ação', 'Bolsa de valores', 'Título',
-                'Investimento', 'Ação 2'
-             ],   
-             datasets:[
-                 {
-                    label:'R$',
-                    data:[
-                        13,
-                        61,
-                        43,
-                        96,
-                        74
-                    ],
-                    backgroundColor:[
-                        'rgba(33, 162, 70, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(75, 192, 192, 0.6)'
-                    ]
-                 } 
-             ]
-            }
-        }
+        this.state = this.props
     }
 
     static defaultProps = {
@@ -41,9 +15,9 @@ class PieChart extends Component{
 
     render(){
         return(
-            <div className="piechart grafico00">
+            <div className="piechart">
                 <Pie
-                    data={this.state.chartData}
+                    data={this.props.chartData}
                     options={{
                         title:{
                             display:this.props.displayTitle,

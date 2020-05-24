@@ -21,6 +21,13 @@
   
 }
 
+.cardSugestao{
+  opacity: 0.95;
+  top: 2%;
+  left: 12%;
+  width: 70%;
+}
+
 .text-top5{
 text-align: center;
 }
@@ -140,9 +147,6 @@ a:link{
 }
 
 .welcome {
-
-  font-size: 400%;
-  font-family: monospace;
   text-align: center;
   color: #24ae4e;
 }
@@ -244,8 +248,8 @@ body {
 }
 
 .iconUser {
-  height: 80%;
-  width: 80%; 
+  height: 100%;
+  width: 70%; 
 }
 p.blocktext {
   margin-left: auto;
@@ -256,6 +260,11 @@ p.blocktext {
   width: 105%;
 }
 
+.grafico3 {
+  width: 105%;
+  height: 100%;
+}
+
 .searchPosition {
   padding-top: 5px;
   left: 85%;
@@ -263,7 +272,6 @@ p.blocktext {
 }
 
 .topMargin {
-  opacity: 0.9;
   margin-left: 16%;
 }
 
@@ -272,18 +280,17 @@ p.blocktext {
 }
 
 .graficos{
-  opacity: 0.9;
   padding-left: 17%;
   text-align: center;
 }
 
 .graficos2 {
-  opacity: 0.9;
   padding-left: 5%;
 }
 
+
 .top5 {
-  width: 100%;
+  width: 77%;
 }
 
 .lista-top5{

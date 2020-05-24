@@ -19,6 +19,34 @@ const ApiService = {
                     method: 'GET', 
                     headers: {'content-type': 'application/json'},
                 })
+    },
+
+    buscarInvestimentos: id =>{
+        return fetch(`http://localhost:8080/api/transacoes/usuario/${id}`, {
+                    method: 'GET', 
+                    headers: {'content-type': 'application/json'},
+        })
+        
+    },
+
+    montarGrafico: id => {
+        console.log(id)
+        return fetch(`http://localhost:8080/api/transacoes/lucro/${id}`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
+    },
+
+    top5: idUsuario => {
+        return fetch(`http://localhost:8080/api/transacoes/top/${idUsuario} & ${5}`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
     }
+
 }
+
+    
 export default ApiService;

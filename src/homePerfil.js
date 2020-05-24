@@ -1,36 +1,26 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
 import ListaTop5 from './ListaTop5';
-import SimpleLineChart from './SimpleLineChart';
 import './index.css';
 import top5 from './images/top5.png';
-import investimento1 from './images/imgInvestimento2.jpeg';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
-
-
-
-var style = {
-  width: '80%',
-  heigth: '80%',
-  marginLeft: '20%'
-}
-
 
 class homePerfil extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       nome: '',
       estado: '',
       endereco: '',
       idade: '',
       sexo: '',
-      telefone: ''
-
+      telefone: '',
+      top5: []
     }
   }
 
@@ -40,6 +30,7 @@ class homePerfil extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
+          id: res.id,
           nome: res.nome,
           estado: res.estado,
           endereco: res.endereco,
@@ -47,6 +38,42 @@ class homePerfil extends Component {
           sexo: res.sexo,
           telefone: res.telefone
         });
+
+        ApiService.montarGrafico(1)
+      .then(res =>{ 
+        let legenda = []
+        let data = []
+        Array.from(res).forEach(function(y){
+          legenda.push(y.investimento.nome)
+          data.push(y.valor)
+
+        })
+        this.setState({
+          chartData:{
+            labels:[...legenda],   
+            datasets:[
+                {
+                   label:'Teste',
+                   data:[...data],
+                   backgroundColor:[
+                       'rgba(33, 162, 70, 0.6)',
+                       'rgba(255, 99, 132, 0.6)',
+                       'rgba(54, 162, 235, 0.6)',
+                       'rgba(255, 159, 64, 0.6)',
+                       'rgba(75, 192, 192, 0.6)'
+                   ]
+                } 
+            ]
+           }
+        })  
+        });
+
+        ApiService.top5(1)
+        .then(res =>{
+          this.setState({
+            top5:[...this.state.top5,...res]
+          })
+        })
       });
   }
   render() {
@@ -54,42 +81,52 @@ class homePerfil extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} />
+            <SideBar perfil={this.state} email={this.props.location.state.email} />
           </div>
         </div>
-        <form class="form-inline my-2 my-lg-0 searchPosition">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form className="form-inline my-2 my-lg-0 searchPosition">
+          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div id="page-wrap">
           <div>
             <h1 className="welcome">Bem vindo, {this.state.nome}</h1>
           </div>
         </div>
-        <div class="row">
-          <div class="col-6 graficos mt-5">
-            <div class="card car grafico">
-              <h5 class="card-header labelgraph">Rendimento total</h5>
-              <div class="card-body grafico00">
-                <PieChart />
+        <div className="row">
+          <div className="col-6 graficos mt-5">
+            <div className="card car grafico">
+              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <div className="card-body">
+                <PieChart chartData={this.state.chartData} />
               </div>
             </div>
           </div>
-          <div class="col-6 graficos2 mt-5">
-            <div class="card car grafico2">
-              <h5 class="card-header labelgraph">Investimento mais rentável</h5>
-              <div class="card-body">
-                <LineChart />
+          <div className="col-6 graficos2 mt-5">
+            <div className="card car grafico2">
+              <h5 className="card-header labelgraph">Investimento mais rentável</h5>
+              <div className="card-body">
+                <LineChart chartData={this.state.chartData} />
               </div>
             </div>
           </div>
         </div>
-        <div class="col-9 topMargin mt-5">
-          <div class="card top5">
-            <h5 class="card-header topHeader labelgraph">Top 5 Investimentos para iniciantes</h5>
-            <img className='iconTop5 displayed coroa' src={top5} />
-            <div class="card-body">
-              <ListaTop5 />
+        <div className="row">
+          <div className="col-6 graficos mt-5">
+            <div className="card car grafico3">
+              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <div className="card-body">
+                <PieChart />
+              </div>
+            </div>
+          </div>
+          <div className="col-6 graficos2 mt-5">
+            <div className="card top5">
+              <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
+              <img className='iconTop5 displayed coroa' src={top5} />
+              <div className="card-body">
+                <ListaTop5 top5={this.state.top5}/>  
+              </div>
             </div>
           </div>
         </div>
@@ -98,3 +135,43 @@ class homePerfil extends Component {
   }
 }
 export default homePerfil;
+/*
+chartData:{
+  labels:[
+     'Ação', 'Bolsa de valores', 'Título',
+     'Investimento', 'Ação 2'
+  ],   
+  datasets:[
+      {
+         label:'Teste',
+         data:[
+             13,
+             61,
+             43,
+             96,
+             74
+         ],
+         backgroundColor:[
+             'rgba(33, 162, 70, 0.6)',
+             'rgba(255, 99, 132, 0.6)',
+             'rgba(54, 162, 235, 0.6)',
+             'rgba(255, 159, 64, 0.6)',
+             'rgba(75, 192, 192, 0.6)'
+         ]
+      } 
+  ]
+ }
+
+
+ chartData:{
+  labels:[...legenda] ,
+  datasets:[
+   {
+      label:'Teste',
+      data:[...data],
+      backgroundColor:[
+          'rgba(33, 162, 70, 0.6)'
+      ]
+   } 
+  ]
+}*/
