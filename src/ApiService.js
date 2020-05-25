@@ -71,8 +71,8 @@ const ApiService = {
         .then(res => res.json())
     },
     
-    sugestaoTop1: () => {
-        return fetch(`http://localhost:8080/api/acoes/sugestao`,{
+    pegaSugestao: (id) => {
+        return fetch(`http://localhost:8080/api/acoes/sugestao/${id}`,{
             method: 'GET',
             headers: {'content-type' : 'aplication/json'},
         })

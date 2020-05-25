@@ -3,10 +3,11 @@ import './App.css';
 import { Link, Redirect } from 'react-router-dom';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
-import ListaTop5 from './ListaTop5';
 import './index.css';
-import top5 from './images/top5.png';
-import LineChart from './LineChart';
+import SugestaoChart from './SugestaoChart';
+import SugestaoChart2 from './SugestaoChart2';
+import SugestaoChart3 from './SugestaoChart3';
+import SugestaoChart4 from './SugestaoChart4';
 import PieChart from './PieChart';
 
 
@@ -23,22 +24,23 @@ class sugestaoInvestimento extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       nome: '',
       estado: '',
       endereco: '',
       idade: '',
       sexo: '',
       telefone: ''
-
     }
   }
 
-
+  
   componentDidMount() {
     ApiService.buscarPerfil(this.props.location.state.email)
       .then(res => res.json())
       .then(res => {
         this.setState({
+          id: res.id,
           nome: res.nome,
           estado: res.estado,
           endereco: res.endereco,
@@ -46,8 +48,206 @@ class sugestaoInvestimento extends Component {
           sexo: res.sexo,
           telefone: res.telefone
         });
+
+        ApiService.pegaSugestao(69)
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamentoAjustado)
+  
+          })
+          this.setState({
+            sugestaoData:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                   ]
+                  } 
+              ]
+             }
+          })  
+          });
+
+          ApiService.pegaSugestao(97)
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamentoAjustado)
+  
+          })
+          this.setState({
+            sugestaoData2:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                   ]
+                  } 
+              ]
+             }
+          })  
+          });
+
+          ApiService.pegaSugestao(33)
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamentoAjustado)
+  
+          })
+          this.setState({
+            sugestaoData3:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                   ]
+                  } 
+              ]
+             }
+          })  
+          });
+
+          ApiService.pegaSugestao(81)
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamentoAjustado)
+  
+          })
+          this.setState({
+            sugestaoData4:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                   ]
+                  } 
+              ]
+             }
+          })  
+          });
+
       });
   }
+
   render() {
     return (
       <div className="body-homePerfil">
@@ -78,17 +278,17 @@ class sugestaoInvestimento extends Component {
             <div className="row">
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">Iochpe Maxion SA</h5>
                   <div className="card-body">
-                    <PieChart />
+                    <SugestaoChart sugestaoData={this.state.sugestaoData}/>
                   </div>
                 </div>
               </div>
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Investimento mais rentável</h5>
+                  <h5 className="card-header labelgraph">WEG</h5>
                   <div className="card-body">
-                    <LineChart />
+                    <SugestaoChart2 sugestaoData2={this.state.sugestaoData2} />
                   </div>
                 </div>
               </div>
@@ -96,17 +296,17 @@ class sugestaoInvestimento extends Component {
             <div className="row">
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">AMBEV S.A</h5>
                   <div className="card-body">
-                    <PieChart />
+                    <SugestaoChart3 sugestaoData3={this.state.sugestaoData3} />
                   </div>
                 </div>
               </div>
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">Oi</h5>
                   <div className="card-body">
-                    <PieChart />
+                    <SugestaoChart4 sugestaoData4={this.state.sugestaoData4} />
                   </div>
                 </div>
               </div>

@@ -8,6 +8,10 @@ import './index.css';
 import top5 from './images/top5.png';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
+import ManteveChart from './ManteveChart';
+import ManteveChart2 from './ManteveChart2';
+import ManteveChart3 from './ManteveChart3';
+import ManteveChart4 from './ManteveChart4';
 
 
 
@@ -23,31 +27,229 @@ class investimentoSeguro extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nome: '',
-            estado: '',
-            endereco: '',
-            idade: '',
-            sexo: '',
-            telefone: ''
-
+          id: '',
+          nome: '',
+          estado: '',
+          endereco: '',
+          idade: '',
+          sexo: '',
+          telefone: ''
         }
-    }
-
-
-    componentDidMount() {
+      }
+    
+      
+      componentDidMount() {
         ApiService.buscarPerfil(this.props.location.state.email)
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    nome: res.nome,
-                    estado: res.estado,
-                    endereco: res.endereco,
-                    idade: res.idade,
-                    sexo: res.sexo,
-                    telefone: res.telefone
-                });
+          .then(res => res.json())
+          .then(res => {
+            this.setState({
+              id: res.id,
+              nome: res.nome,
+              estado: res.estado,
+              endereco: res.endereco,
+              idade: res.idade,
+              sexo: res.sexo,
+              telefone: res.telefone
             });
-    }
+    
+            ApiService.pegaSugestao(57)
+            .then(res =>{ 
+              let legenda = []
+              let data = []
+              Array.from(res).forEach(function(y){
+                legenda.push(y.data)
+                data.push(y.fechamentoAjustado)
+      
+              })
+              this.setState({
+                manteveData:{
+                  labels:[...legenda],   
+                  datasets:[
+                      {
+                         label:'Fechamento do dia',
+                         data:[...data],
+                         backgroundColor:[
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                       ]
+                      } 
+                  ]
+                 }
+              })  
+              });
+    
+              ApiService.pegaSugestao(51)
+            .then(res =>{ 
+              let legenda = []
+              let data = []
+              Array.from(res).forEach(function(y){
+                legenda.push(y.data)
+                data.push(y.fechamentoAjustado)
+      
+              })
+              this.setState({
+                manteveData2:{
+                  labels:[...legenda],   
+                  datasets:[
+                      {
+                         label:'Fechamento do dia',
+                         data:[...data],
+                         backgroundColor:[
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                       ]
+                      } 
+                  ]
+                 }
+              })  
+              });
+    
+              ApiService.pegaSugestao(55)
+            .then(res =>{ 
+              let legenda = []
+              let data = []
+              Array.from(res).forEach(function(y){
+                legenda.push(y.data)
+                data.push(y.fechamentoAjustado)
+      
+              })
+              this.setState({
+                manteveData3:{
+                  labels:[...legenda],   
+                  datasets:[
+                      {
+                         label:'Fechamento do dia',
+                         data:[...data],
+                         backgroundColor:[
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                       ]
+                      } 
+                  ]
+                 }
+              })  
+              });
+    
+              ApiService.pegaSugestao(59)
+            .then(res =>{ 
+              let legenda = []
+              let data = []
+              Array.from(res).forEach(function(y){
+                legenda.push(y.data)
+                data.push(y.fechamentoAjustado)
+      
+              })
+              this.setState({
+                manteveData4:{
+                  labels:[...legenda],   
+                  datasets:[
+                      {
+                         label:'Fechamento do dia',
+                         data:[...data],
+                         backgroundColor:[
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                          'rgba(33, 162, 70, 0.6)',
+                       ]
+                      } 
+                  ]
+                 }
+              })  
+              });
+    
+          });
+      }
     render() {
         return (
             <div className="body-homePerfil">
@@ -80,7 +282,7 @@ class investimentoSeguro extends Component {
                             <div className="card car graficoSugestao">
                                 <h5 className="card-header labelgraph">Rendimento total</h5>
                                 <div className="card-body">
-                                    <PieChart />
+                                    <ManteveChart manteveData={this.state.manteveData} />
                                 </div>
                             </div>
                         </div>
@@ -88,7 +290,7 @@ class investimentoSeguro extends Component {
                             <div className="card car graficoSugestao">
                                 <h5 className="card-header labelgraph">Investimento mais rentável</h5>
                                 <div className="card-body">
-                                    <LineChart />
+                                    <ManteveChart2 manteveData2={this.state.manteveData2} />
                                 </div>
                             </div>
                         </div>
@@ -98,7 +300,7 @@ class investimentoSeguro extends Component {
                             <div className="card car graficoSugestao">
                                 <h5 className="card-header labelgraph">Rendimento total</h5>
                                 <div className="card-body">
-                                    <PieChart />
+                                    <ManteveChart3 manteveData3={this.state.manteveData3}/>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +308,7 @@ class investimentoSeguro extends Component {
                             <div className="card car graficoSugestao">
                                 <h5 className="card-header labelgraph">Rendimento total</h5>
                                 <div className="card-body">
-                                    <PieChart />
+                                    <ManteveChart4 manteveData4={this.state.manteveData4} />
                                 </div>
                             </div>
                         </div>
