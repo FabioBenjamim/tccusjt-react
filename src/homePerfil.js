@@ -74,7 +74,7 @@ class homePerfil extends Component {
           .then(res => {
             let legenda = []
             let data = []
-            Array.from(res).forEach(function (y) {
+            Array.from(res).reverse().forEach(function (y) {
               legenda.push(formatarData(y.data))
               data.push(y.fechamento)
 
