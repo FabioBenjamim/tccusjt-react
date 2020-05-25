@@ -44,7 +44,41 @@ const ApiService = {
             headers: {'content-type' : 'aplication/json'},
         })
         .then(res => res.json())
+    },
+
+    prever: (id, data) => {
+        return fetch(`http://localhost:8080/api//transacao/prever/${id}&${data}`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
+    },
+    
+    salvaTransacao: transacao => {
+        return fetch(`http://localhost:8080/api//transacao`,{
+            method: 'POST',
+            headers: {'content-type' : 'aplication/json'},
+            body: transacao
+        })
+        .then(res => res.json()) 
+    },
+
+    pegaDolar: () => {
+        return fetch(`http://localhost:8080/api/dolar`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
+    },
+    
+    sugestaoTop1: () => {
+        return fetch(`http://localhost:8080/api/acoes/sugestao`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
+        .then(res => res.json())
     }
+
 
 }
 

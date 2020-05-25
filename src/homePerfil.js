@@ -7,6 +7,7 @@ import './index.css';
 import top5 from './images/top5.png';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
+import DolarChart from './DolarChart';
 
 class homePerfil extends Component {
 
@@ -39,7 +40,7 @@ class homePerfil extends Component {
           telefone: res.telefone
         });
 
-        ApiService.montarGrafico(1)
+        ApiService.montarGrafico(res.id)
       .then(res =>{ 
         let legenda = []
         let data = []
@@ -68,7 +69,58 @@ class homePerfil extends Component {
         })  
         });
 
-        ApiService.top5(1)
+        ApiService.pegaDolar()
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamento)
+  
+          })
+          this.setState({
+            dolarData:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      
+
+                     ]
+                  } 
+              ]
+             }
+          })  
+          });
+
+        ApiService.top5(res.id)
         .then(res =>{
           this.setState({
             top5:[...this.state.top5,...res]
@@ -114,9 +166,9 @@ class homePerfil extends Component {
         <div className="row">
           <div className="col-6 graficos mt-5">
             <div className="card car grafico3">
-              <h5 className="card-header labelgraph">Rendimento total</h5>
+              <h5 className="card-header labelgraph">Cotação do Dólar</h5>
               <div className="card-body">
-                <PieChart />
+                <DolarChart dolarData={this.state.dolarData} />
               </div>
             </div>
           </div>

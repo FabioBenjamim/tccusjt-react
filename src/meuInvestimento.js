@@ -8,6 +8,7 @@ class meuInvestimento extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             nome: '',
             estado: '',
             endereco: '',
@@ -16,7 +17,9 @@ class meuInvestimento extends Component {
             telefone: '',
             investimentos: [
             ],
-            descricao: 'nulo'
+            descricao: 'nulo',
+            data: '',
+            id_investimento:''
         }
     }
 
@@ -25,6 +28,7 @@ class meuInvestimento extends Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
+                    id: res.id,
                     nome: res.nome,
                     estado: res.estado,
                     endereco: res.endereco,
@@ -44,8 +48,27 @@ class meuInvestimento extends Component {
         
     }
 
+    escutadorDeInput = event => {
+        const { name, value } = event.target;
+          this.setState({
+              [name]: value
+          });     
+    }
+
+    chamarApi = dale =>{
+        ApiService.prever(this.state.id_investimento, this.state.data)
+        .then(res => {
+            this.setState({
+                descricao: res.valor
+            })
+        })
+    }
+
     setaDescricao = linha =>{
-        this.setState({  descricao: linha.valor });
+      this.setState({
+          id_investimento: linha.id,
+          descricao: linha.valor
+      })
     }
 
     removeAutor = (investimentoss, id) => {
@@ -75,11 +98,11 @@ class meuInvestimento extends Component {
                                     <thead>
                                         <tr>
                                             <th scope="col-3">#</th>
-                                            <th scope="col-3">valor</th>
-                                            <th scope="col-3">data inclusão</th>
-                                            <th scope="col">Tipo Investimento</th>
-                                            <th scope="col-3">descrição</th>
-                                            <th scope="col-3">remover</th>
+                                            <th scope="col-3">Valor</th>
+                                            <th scope="col-3">Data de inclusão</th>
+                                            <th scope="col">Tipo de investimento</th>
+                                            <th scope="col-3">Previsão</th>
+                                            <th scope="col-3">Remover</th>
                                         </tr>
                                     </thead>
                                     <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor}  setaDescricao = { this.setaDescricao }/>
@@ -135,16 +158,16 @@ class meuInvestimento extends Component {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 className="modal-title" id="staticBackdropLabel">A previsão do investimento para a data selecionada é de R${this.state.descricao}</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                            {this.state.descricao}
+                            <input type='date' name='data'onChange={this.escutadorDeInput}/>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary"     onClick={this.chamarApi}>Calcular</button>
                             </div>
                         </div>
                     </div>
