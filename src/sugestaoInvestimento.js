@@ -9,6 +9,7 @@ import SugestaoChart2 from './SugestaoChart2';
 import SugestaoChart3 from './SugestaoChart3';
 import SugestaoChart4 from './SugestaoChart4';
 import PieChart from './PieChart';
+import { formatarData } from './helpers';
 
 
 
@@ -54,7 +55,7 @@ class sugestaoInvestimento extends Component {
           let legenda = []
           let data = []
           Array.from(res).forEach(function(y){
-            legenda.push(y.data)
+            legenda.push(formatarData(y.data))
             data.push(y.fechamentoAjustado)
   
           })
@@ -103,7 +104,7 @@ class sugestaoInvestimento extends Component {
           let legenda = []
           let data = []
           Array.from(res).forEach(function(y){
-            legenda.push(y.data)
+            legenda.push(formatarData(y.data))
             data.push(y.fechamentoAjustado)
   
           })
@@ -152,7 +153,7 @@ class sugestaoInvestimento extends Component {
           let legenda = []
           let data = []
           Array.from(res).forEach(function(y){
-            legenda.push(y.data)
+            legenda.push(formatarData(y.data))
             data.push(y.fechamentoAjustado)
   
           })
@@ -201,7 +202,7 @@ class sugestaoInvestimento extends Component {
           let legenda = []
           let data = []
           Array.from(res).forEach(function(y){
-            legenda.push(y.data)
+            legenda.push(formatarData(y.data))
             data.push(y.fechamentoAjustado)
   
           })
