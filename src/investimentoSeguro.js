@@ -3,15 +3,12 @@ import './App.css';
 import { Link, Redirect } from 'react-router-dom';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
-import ListaTop5 from './ListaTop5';
 import './index.css';
-import top5 from './images/top5.png';
-import LineChart from './LineChart';
-import PieChart from './PieChart';
 import ManteveChart from './ManteveChart';
 import ManteveChart2 from './ManteveChart2';
 import ManteveChart3 from './ManteveChart3';
 import ManteveChart4 from './ManteveChart4';
+import { formatarData } from './helpers';
 
 
 
@@ -57,7 +54,7 @@ class investimentoSeguro extends Component {
               let legenda = []
               let data = []
               Array.from(res).forEach(function(y){
-                legenda.push(y.data)
+                legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
       
               })
@@ -106,7 +103,7 @@ class investimentoSeguro extends Component {
               let legenda = []
               let data = []
               Array.from(res).forEach(function(y){
-                legenda.push(y.data)
+                legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
       
               })
@@ -155,7 +152,7 @@ class investimentoSeguro extends Component {
               let legenda = []
               let data = []
               Array.from(res).forEach(function(y){
-                legenda.push(y.data)
+                legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
       
               })
@@ -204,7 +201,7 @@ class investimentoSeguro extends Component {
               let legenda = []
               let data = []
               Array.from(res).forEach(function(y){
-                legenda.push(y.data)
+                legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
       
               })
@@ -271,10 +268,10 @@ class investimentoSeguro extends Component {
                     <div class="card-header cardHeader">
                         <button type="button" class="btn btn-dark ml-3">
                             <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.email } }}>
-                                Investimento que os juros mais subiram
+                            Investimento que juros mais subiram
                             </Link>
                         </button>
-                        <button type="button" class="btn btn-dark ml-3"><Link to="/" className="text">Investimento que juros mais subiram</Link></button>
+                        <button type="button" class="btn btn-dark ml-3"><Link to="/" className="text">Investimento que os juros se manteve</Link></button>
                 </div>
                 <div class="card-body">
                     <div className="row">
