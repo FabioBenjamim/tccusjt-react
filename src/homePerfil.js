@@ -138,10 +138,10 @@ class homePerfil extends Component {
             <SideBar perfil={this.state} email={this.props.location.state.email}/>
           </div>
         </div>
-        <form className="form-inline my-2 my-lg-0 searchPosition">
-          <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
+        {/*  <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>*/}
+        {/*  <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*/}
+        {/*</form>*/}
         <div id="page-wrap">
           <div>
             <h1 className="welcome">Bem vindo, {this.state.nome}</h1>

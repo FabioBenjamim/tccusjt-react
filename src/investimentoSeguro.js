@@ -33,8 +33,8 @@ class investimentoSeguro extends Component {
           telefone: ''
         }
       }
-    
-      
+
+
       componentDidMount() {
         ApiService.buscarPerfil(this.props.location.state.email)
           .then(res => res.json())
@@ -48,19 +48,19 @@ class investimentoSeguro extends Component {
               sexo: res.sexo,
               telefone: res.telefone
             });
-    
+
             ApiService.pegaSugestao(57)
-            .then(res =>{ 
+            .then(res =>{
               let legenda = []
               let data = []
               Array.from(res).reverse().forEach(function(y){
                 legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
-      
+
               })
               this.setState({
                 manteveData:{
-                  labels:[...legenda],   
+                  labels:[...legenda],
                   datasets:[
                       {
                          label:'Fechamento do dia',
@@ -92,24 +92,24 @@ class investimentoSeguro extends Component {
                           'rgba(33, 162, 70, 0.6)',
                           'rgba(33, 162, 70, 0.6)',
                        ]
-                      } 
+                      }
                   ]
                  }
-              })  
+              })
               });
-    
+
               ApiService.pegaSugestao(51)
-            .then(res =>{ 
+            .then(res =>{
               let legenda = []
               let data = []
               Array.from(res).reverse().forEach(function(y){
                 legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
-      
+
               })
               this.setState({
                 manteveData2:{
-                  labels:[...legenda],   
+                  labels:[...legenda],
                   datasets:[
                       {
                          label:'Fechamento do dia',
@@ -141,24 +141,24 @@ class investimentoSeguro extends Component {
                           'rgba(33, 162, 70, 0.6)',
                           'rgba(33, 162, 70, 0.6)',
                        ]
-                      } 
+                      }
                   ]
                  }
-              })  
+              })
               });
-    
+
               ApiService.pegaSugestao(55)
-            .then(res =>{ 
+            .then(res =>{
               let legenda = []
               let data = []
               Array.from(res).reverse().forEach(function(y){
                 legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
-      
+
               })
               this.setState({
                 manteveData3:{
-                  labels:[...legenda],   
+                  labels:[...legenda],
                   datasets:[
                       {
                          label:'Fechamento do dia',
@@ -190,24 +190,24 @@ class investimentoSeguro extends Component {
                           'rgba(33, 162, 70, 0.6)',
                           'rgba(33, 162, 70, 0.6)',
                        ]
-                      } 
+                      }
                   ]
                  }
-              })  
+              })
               });
-    
+
               ApiService.pegaSugestao(59)
-            .then(res =>{ 
+            .then(res =>{
               let legenda = []
               let data = []
               Array.from(res).reverse().forEach(function(y){
                 legenda.push(formatarData(y.data))
                 data.push(y.fechamentoAjustado)
-      
+
               })
               this.setState({
                 manteveData4:{
-                  labels:[...legenda],   
+                  labels:[...legenda],
                   datasets:[
                       {
                          label:'Fechamento do dia',
@@ -239,12 +239,12 @@ class investimentoSeguro extends Component {
                           'rgba(33, 162, 70, 0.6)',
                           'rgba(33, 162, 70, 0.6)',
                        ]
-                      } 
+                      }
                   ]
                  }
-              })  
+              })
               });
-    
+
           });
       }
     render() {
@@ -255,10 +255,10 @@ class investimentoSeguro extends Component {
                         <SideBar perfil={this.state} email={this.props.location.state.email} />
                     </div>
                 </div>
-                <form className="form-inline my-2 my-lg-0 searchPosition">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
+                {/*    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />*/}
+                {/*    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*/}
+                {/*</form>*/}
                 <div id="page-wrap">
                     <div>
                         <h1 className="welcome">Sugestão de investimento {this.state.nome}</h1>
