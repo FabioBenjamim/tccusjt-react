@@ -3,12 +3,13 @@ import SideBar from './sidebar';
 import ApiService from './ApiService';
 import Tabela from './corpoTabela';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Acoes from './acoes';
 
 class meuInvestimento extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id:'',
+            id: '',
             nome: '',
             estado: '',
             endereco: '',
@@ -19,8 +20,9 @@ class meuInvestimento extends Component {
             ],
             descricao: 'nulo',
             data: '',
-            dataVencimento:'',
-            id_investimento:''
+            dataVencimento: '',
+            id_investimento: '',
+            acoes: []
         }
     }
 
@@ -38,38 +40,43 @@ class meuInvestimento extends Component {
                     telefone: res.telefone
                 });
                 ApiService.buscarInvestimentos(res.id)
+                    .then(res => res.json())
+                    .then(res => {
+                        console.log(res)
+                        this.setState({ investimentos: [...this.state.investimentos, ...res] })
+                        console.log(this.state.investimentos)
+                        console.log(res)
+                    });
+            });
+
+        ApiService.buscaTodosInventimentos()
         .then(res => res.json())
         .then(res => {
-            console.log(res)
-            this.setState({ investimentos: [...this.state.investimentos, ...res] })
-            console.log(this.state.investimentos)
-            console.log(res)
+            this.setState({ acoes: [...this.state.acoes, ...res] })
         });
-            });
-        
     }
 
     escutadorDeInput = event => {
         const { name, value } = event.target;
-          this.setState({
-              [name]: value
-          });     
+        this.setState({
+            [name]: value
+        });
     }
 
-    chamarApi = dale =>{
+    chamarApi = dale => {
         ApiService.prever(this.state.id_investimento, this.state.data)
-        .then(res => {
-            this.setState({
-                descricao: res.valor
+            .then(res => {
+                this.setState({
+                    descricao: res.valor
+                })
             })
-        })
     }
 
-    setaDescricao = linha =>{
-      this.setState({
-          id_investimento: linha.id,
-          descricao: linha.valor
-      })
+    setaDescricao = linha => {
+        this.setState({
+            id_investimento: linha.id,
+            descricao: linha.valor
+        })
     }
 
     removeAutor = (investimentoss, id) => {
@@ -109,69 +116,49 @@ class meuInvestimento extends Component {
                                             <th scope="col-3">Remover</th>
                                         </tr>
                                     </thead>
-                                    <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor}  setaDescricao = { this.setaDescricao }/>
+                                    <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor} setaDescricao={this.setaDescricao} />
                                 </table>
                                 <div className="">
-                                    <div className="row mt-5">
-                                        <div className="col-6">
-                                            <input type="text"
-                                                name="valor"
-                                                className="form-control"
-                                                placeholder="Valor"
-                                                autoComplete="off"
-                                            />
-                                        </div>
-                                        <div className="col-6">
-                                            <input type="text"
-                                                className="form-control"
-                                                name="dataInclusão"
-                                                placeholder="Data Inclusão"
-                                                autoComplete="off"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="row mt-5">
+                                    <div className="botao-direita">
                                         <div className="col">
-                                            <input type="text"
-                                                name="descrição"
-                                                className="form-control"
-                                                placeholder="Descrição"
-                                                autoComplete="off"
-                                                onChange={this.escutadorDeInput}
-                                            />
-                                        </div>
-                                        <div className="col">
-                                            <input type="text"
-                                                className="form-control"
-                                                name="tipoInvestimento"
-                                                placeholder="Tipo Investimento"
-                                                autoComplete="off"
-                                                onChange={this.escutadorDeInput}
-                                            />
-                                        </div>
-                                        <div className="col">
-                                            <button className="btn btn-dark">Cadastrar</button>
+                                            <button className="btn btn-dark" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cadastrar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div className="collapse card car grafico mt-5" id="collapseExample">
+                            <h5 className="card-header labelgraph">Cadastrar Investimento</h5>
+
+                            <div className="card-body">
+                                
+                               <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput}/>
+                                <div className="">
+                                    <div className="botao-direita">
+                                        <div className="col">
+                                            <button className="btn btn-dark mt-4" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cadastrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                </div>
                 <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-        <h5 className="modal-title" id="staticBackdropLabel">A previsão do investimento para a data selecionada é de R${this.state.descricao}</h5>
+                                <h5 className="modal-title" id="staticBackdropLabel">A previsão do investimento para a data selecionada é de R${this.state.descricao}</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                            <input type='date' name='data'onChange={this.escutadorDeInput}/>
+                                <input type='date' name='data' onChange={this.escutadorDeInput} />
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary"     onClick={this.chamarApi}>Calcular</button>
+                                <button type="button" className="btn btn-secondary" onClick={this.chamarApi}>Calcular</button>
                             </div>
                         </div>
                     </div>

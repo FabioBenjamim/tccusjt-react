@@ -77,6 +77,13 @@ const ApiService = {
             headers: {'content-type' : 'aplication/json'},
         })
         .then(res => res.json())
+    },
+
+    buscaTodosInventimentos: () =>{
+        return fetch(`http://localhost:8080/api/transacoes`,{
+            method: 'GET',
+            headers: {'content-type' : 'aplication/json'},
+        })
     }
 
 

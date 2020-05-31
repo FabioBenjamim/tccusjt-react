@@ -21,6 +21,10 @@
   
 }
 
+.botao-direita{
+  margin-left: auto;
+}
+
 .cardSugestao{
   opacity: 0.95;
   top: 2%;
