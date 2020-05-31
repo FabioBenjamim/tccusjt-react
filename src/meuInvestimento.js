@@ -104,7 +104,7 @@ class meuInvestimento extends Component {
                                             <th scope="col-3">Data de vencimento</th>
                                             <th scope="col">Tipo de investimento</th>
                                             <th scope="col-3">Taxa aplicada</th>
-                                            <th scope="col-3">Porcentagem</th>
+                                            <th scope="col-3">Porcentagem da taxa</th>
                                             <th scope="col-3">Previsão</th>
                                             <th scope="col-3">Remover</th>
                                         </tr>
