@@ -12,7 +12,6 @@ import PieChart from './PieChart';
 import { formatarData } from './helpers';
 
 
-
 var style = {
   width: '80%',
   heigth: '80%',
@@ -51,22 +50,22 @@ class sugestaoInvestimento extends Component {
         });
 
         ApiService.pegaSugestao(69)
-        .then(res =>{
-          let legenda = []
-          let data = []
-          Array.from(res).reverse().forEach(function(y){
-            legenda.push(formatarData(y.data))
-            data.push(y.fechamentoAjustado)
+          .then(res => {
+            let legenda = []
+            let data = []
+            Array.from(res).reverse().forEach(function (y) {
+              legenda.push(formatarData(y.data))
+              data.push(y.fechamentoAjustado)
 
-          })
-          this.setState({
-            sugestaoData:{
-              labels:[...legenda],
-              datasets:[
+            })
+            this.setState({
+              sugestaoData: {
+                labels: [...legenda],
+                datasets: [
                   {
-                     label:'Fechamento do dia',
-                     data:[...data],
-                     backgroundColor:[
+                    label: 'Fechamento do dia',
+                    data: [...data],
+                    backgroundColor: [
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
@@ -92,30 +91,30 @@ class sugestaoInvestimento extends Component {
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
-                   ]
+                    ]
                   }
-              ]
-             }
-          })
+                ]
+              }
+            })
           });
 
-          ApiService.pegaSugestao(97)
-        .then(res =>{
-          let legenda = []
-          let data = []
-          Array.from(res).reverse().forEach(function(y){
-            legenda.push(formatarData(y.data))
-            data.push(y.fechamentoAjustado)
+        ApiService.pegaSugestao(97)
+          .then(res => {
+            let legenda = []
+            let data = []
+            Array.from(res).reverse().forEach(function (y) {
+              legenda.push(formatarData(y.data))
+              data.push(y.fechamentoAjustado)
 
-          })
-          this.setState({
-            sugestaoData2:{
-              labels:[...legenda],
-              datasets:[
+            })
+            this.setState({
+              sugestaoData2: {
+                labels: [...legenda],
+                datasets: [
                   {
-                     label:'Fechamento do dia',
-                     data:[...data],
-                     backgroundColor:[
+                    label: 'Fechamento do dia',
+                    data: [...data],
+                    backgroundColor: [
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
@@ -141,30 +140,30 @@ class sugestaoInvestimento extends Component {
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
-                   ]
+                    ]
                   }
-              ]
-             }
-          })
+                ]
+              }
+            })
           });
 
-          ApiService.pegaSugestao(33)
-        .then(res =>{
-          let legenda = []
-          let data = []
-          Array.from(res).reverse().forEach(function(y){
-            legenda.push(formatarData(y.data))
-            data.push(y.fechamentoAjustado)
+        ApiService.pegaSugestao(33)
+          .then(res => {
+            let legenda = []
+            let data = []
+            Array.from(res).reverse().forEach(function (y) {
+              legenda.push(formatarData(y.data))
+              data.push(y.fechamentoAjustado)
 
-          })
-          this.setState({
-            sugestaoData3:{
-              labels:[...legenda],
-              datasets:[
+            })
+            this.setState({
+              sugestaoData3: {
+                labels: [...legenda],
+                datasets: [
                   {
-                     label:'Fechamento do dia',
-                     data:[...data],
-                     backgroundColor:[
+                    label: 'Fechamento do dia',
+                    data: [...data],
+                    backgroundColor: [
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
@@ -190,30 +189,30 @@ class sugestaoInvestimento extends Component {
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
-                   ]
+                    ]
                   }
-              ]
-             }
-          })
+                ]
+              }
+            })
           });
 
-          ApiService.pegaSugestao(81)
-        .then(res =>{
-          let legenda = []
-          let data = []
-          Array.from(res).reverse().forEach(function(y){
-            legenda.push(formatarData(y.data))
-            data.push(y.fechamentoAjustado)
+        ApiService.pegaSugestao(81)
+          .then(res => {
+            let legenda = []
+            let data = []
+            Array.from(res).reverse().forEach(function (y) {
+              legenda.push(formatarData(y.data))
+              data.push(y.fechamentoAjustado)
 
-          })
-          this.setState({
-            sugestaoData4:{
-              labels:[...legenda],
-              datasets:[
+            })
+            this.setState({
+              sugestaoData4: {
+                labels: [...legenda],
+                datasets: [
                   {
-                     label:'Fechamento do dia',
-                     data:[...data],
-                     backgroundColor:[
+                    label: 'Fechamento do dia',
+                    data: [...data],
+                    backgroundColor: [
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
@@ -239,11 +238,11 @@ class sugestaoInvestimento extends Component {
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
                       'rgba(33, 162, 70, 0.6)',
-                   ]
+                    ]
                   }
-              ]
-             }
-          })
+                ]
+              }
+            })
           });
 
       });
@@ -254,7 +253,7 @@ class sugestaoInvestimento extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email={this.props.location.state.email} />
+            <SideBar perfil={this.state} email={this.props.location.state.email}/>
           </div>
         </div>
         {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
@@ -268,7 +267,11 @@ class sugestaoInvestimento extends Component {
         </div>
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
-            <button type="button" class="btn btn-dark ml-3"><Link to="/" className="text">Investimento que juros mais subiram</Link></button>
+            <button type="button" class="btn btn-dark ml-3">
+              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.email } }} className="text">
+                Investimento que juros mais subiram
+              </Link>
+            </button>
             <button type="button" class="btn btn-dark ml-3">
               <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email: this.props.email } }}>
                 Investimento que os juros se manteve
@@ -289,7 +292,7 @@ class sugestaoInvestimento extends Component {
                 <div className="card car graficoSugestao">
                   <h5 className="card-header labelgraph">WEG</h5>
                   <div className="card-body">
-                    <SugestaoChart2 sugestaoData2={this.state.sugestaoData2} />
+                    <SugestaoChart2 sugestaoData2={this.state.sugestaoData2}/>
                   </div>
                 </div>
               </div>
@@ -299,7 +302,7 @@ class sugestaoInvestimento extends Component {
                 <div className="card car graficoSugestao">
                   <h5 className="card-header labelgraph">AMBEV S.A</h5>
                   <div className="card-body">
-                    <SugestaoChart3 sugestaoData3={this.state.sugestaoData3} />
+                    <SugestaoChart3 sugestaoData3={this.state.sugestaoData3}/>
                   </div>
                 </div>
               </div>
@@ -307,15 +310,16 @@ class sugestaoInvestimento extends Component {
                 <div className="card car graficoSugestao">
                   <h5 className="card-header labelgraph">Oi</h5>
                   <div className="card-body">
-                    <SugestaoChart4 sugestaoData4={this.state.sugestaoData4} />
+                    <SugestaoChart4 sugestaoData4={this.state.sugestaoData4}/>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }
+
 export default sugestaoInvestimento;
