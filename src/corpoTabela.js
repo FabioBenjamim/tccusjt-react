@@ -3,6 +3,7 @@ import { formatarData } from './helpers';
 
 
 
+
 const TableBody = props =>{
     
     const linhas = props.investimentos.map((linha)=>{
@@ -17,6 +18,7 @@ const TableBody = props =>{
             <td>{}</td>
             <td><button type="button"  onClick= { () =>{props.setaDescricao(linha) }} className="btn btn-dark" data-toggle="modal" data-target="#staticBackdrop">Prever</button></td>
             <td><button  onClick= { () => props.removeAutor(linha, linha.id)} className="btn btn-dark ">Remover</button></td>
+
         </tr>
        );
     });
@@ -38,6 +40,7 @@ class Tabela extends Component{
         return(
 
         <TableBody investimentos={ investimentos } removeAutor = { removeAutor } setaDescricao = { setaDescricao }/>
+
         );
     }
 

@@ -4,7 +4,9 @@ import {Pie} from 'react-chartjs-2';
 class PieChart extends Component{
     constructor(props){
         super(props);
+
         this.state = this.props
+
     }
 
     static defaultProps = {
@@ -17,7 +19,9 @@ class PieChart extends Component{
         return(
             <div className="piechart">
                 <Pie
+
                     data={this.props.chartData}
+
                     options={{
                         title:{
                             display:this.props.displayTitle,
