@@ -2,19 +2,29 @@ import React, { Component, Fragment } from 'react';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
 import Tabela from './corpoTabela';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Acoes from './acoes';
+
 
 class meuInvestimento extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             nome: '',
             estado: '',
             endereco: '',
             idade: '',
             sexo: '',
             telefone: '',
-            autores: [
+
+            investimentos: [
             ],
+            descricao: 'nulo',
+            data: '',
+            id_investimento:'',
+            acoes: [],
+            id_acao: 1
         }
     }
 
@@ -23,6 +33,9 @@ class meuInvestimento extends Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
+
+                    id: res.id,
+
                     nome: res.nome,
                     estado: res.estado,
                     endereco: res.endereco,
@@ -30,12 +43,93 @@ class meuInvestimento extends Component {
                     sexo: res.sexo,
                     telefone: res.telefone
                 });
+
+                ApiService.buscarInvestimentos(res.id)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            this.setState({ investimentos: [...this.state.investimentos, ...res] })
+            console.log(this.state.investimentos)
+            console.log(res)
+        });
             });
-            ApiService.buscarInvestimentos(1)
-            .then(res => {
-                console.log(res)
-                this.setState({autores: [...this.state.autores, ...res]})
+        ApiService.buscaTodosInvestimentos()
+        .then(res =>{
+            this.setState({ acoes: [...this.state.acoes, ...res] })
+        })
+        
+    }
+
+    escutadorDeInput = event => {
+        const { name, value } = event.target;
+          this.setState({
+              [name]: value
+          });     
+    }
+
+    submitInvestimento = () =>{
+        ApiService.salvaTransacao(JSON.stringify(
+            {
+                "valor": this.state.valor,
+                "data": this.state.dataI,
+                "resgate": null,
+                "investimento": {
+                    "id": this.state.id_acao,
+                    "nome": this.state.nome,
+                    "tipoInvestimento": {
+                        "id": 1,
+                        "nome": "Renda Fixa"
+                    }
+                },
+                "usuario": {
+                    "id": this.state.id,
+                    "email": this.state.email,
+                    "senha": "senha",
+                    "perfil": {
+                        "id": 1,
+                        "nome": "Fabio Oliveira Oda Benjamim",
+                        "cpf": "445.688.223-30",
+                        "endereco": "Sao Judas",
+                        "idade": 25,
+                        "telefone": "952.066.331",
+                        "sexo": "Masculino",
+                        "estado": "Sao Paulo"
+                    }
+                }
+            }))
+            .then(res =>{
+                if(res.ok){
+                  alert("cadastrado");
+                }else
+                  alert("error");
+              })
+
+    }
+
+    chamarApi = dale =>{
+        ApiService.prever(this.state.id_investimento, this.state.data)
+        .then(res => {
+            this.setState({
+                descricao: res.valor
             })
+        })
+    }
+
+    setaDescricao = linha =>{
+      this.setState({
+          id_investimento: linha.id,
+          descricao: linha.valor
+      })
+    }
+
+    removeAutor = (investimentoss, id) => {
+
+        const { investimentos } = this.state;
+
+        const investimentosAtualizado = investimentos.filter(investimento => {
+            return investimento.id !== id
+        })
+
     }
 
     alertDescrição = () => {
@@ -45,6 +139,10 @@ class meuInvestimento extends Component {
     render() {
         return (
             <Fragment>
+
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
                 <SideBar perfil={this.state} email={this.props.location.state.email} />
                 <div className="row">
                     <div className="col-10 graficos mt-5">
@@ -55,54 +153,61 @@ class meuInvestimento extends Component {
                                     <thead>
                                         <tr>
                                             <th scope="col-3">#</th>
-                                            <th scope="col-3">valor</th>
-                                            <th scope="col-3">data inclusão</th>
-                                            <th scope="col">Tipo Investimento</th>
-                                            <th scope="col-3">descrição</th>
+
+                                            <th scope="col-3">Valor</th>
+                                            <th scope="col-3">Data de inclusão</th>
+                                            <th scope="col">Tipo de investimento</th>
+                                            <th scope="col-3">Previsão</th>
+                                            <th scope="col-3">Remover</th>
                                         </tr>
                                     </thead>
-                                    <Tabela autores={this.state.autores} />
+                                    <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor}  setaDescricao = { this.setaDescricao }/>
+
                                 </table>
                                 <div className="">
                                     <div className="row mt-5">
                                         <div className="col-6">
-                                            <input type="text"
-                                                name="valor"
+
+                                        <input type="text"
                                                 className="form-control"
+                                                name="valor"
                                                 placeholder="Valor"
                                                 autoComplete="off"
+                                                onChange={this.escutadorDeInput}
                                             />
                                         </div>
                                         <div className="col-6">
-                                            <input type="text"
+                                        <input type="text"
                                                 className="form-control"
-                                                name="dataInclusão"
-                                                placeholder="Data Inclusão"
+                                                name="dataI"
+                                                placeholder="Data inclusão"
                                                 autoComplete="off"
+                                                onChange={this.escutadorDeInput}
+
                                             />
                                         </div>
                                     </div>
                                     <div className="row mt-5">
                                         <div className="col">
-                                            <input type="text"
-                                                name="descrição"
+
+                                        <input type="text"
                                                 className="form-control"
+                                                name="desc"
+
                                                 placeholder="Descrição"
                                                 autoComplete="off"
                                                 onChange={this.escutadorDeInput}
                                             />
+
+                                        <div className="row mt-5">
+                                            <div className="col-8">
+                                                <Acoes  escutadorDeInput= { this.escutadorDeInput } acoes= { this.state.acoes }/>
+                                            </div>
+                                        </div>
                                         </div>
                                         <div className="col">
-                                            <input type="text"
-                                                className="form-control"
-                                                name="tipoInvestimento"
-                                                placeholder="Tipo Investimento"
-                                                autoComplete="off"
-                                                onChange={this.escutadorDeInput}
-                                            />
-                                        </div>
-                                        <div className="col">
-                                            <button className="btn btn-dark">Cadastrar</button>
+                                            <button onClick={ this.submitInvestimento } className="btn btn-dark">Cadastrar</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -110,6 +215,26 @@ class meuInvestimento extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+        <h5 className="modal-title" id="staticBackdropLabel">A previsão do investimento para a data selecionada é de R${this.state.descricao}</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                            <input type='date' name='data'onChange={this.escutadorDeInput}/>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={this.chamarApi}>Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </Fragment>
         );
     }

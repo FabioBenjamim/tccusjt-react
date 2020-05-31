@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import SideBar from './sidebar';
 import ApiService from './ApiService';
@@ -7,14 +7,7 @@ import './index.css';
 import top5 from './images/top5.png';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
-
-
-
-var style = {
-  width: '80%',
-  heigth: '80%',
-  marginLeft: '20%'
-}
+import DolarChart from './DolarChart';
 
 
 class homePerfil extends Component {
@@ -22,13 +15,16 @@ class homePerfil extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
+
       nome: '',
       estado: '',
       endereco: '',
       idade: '',
       sexo: '',
-      telefone: ''
 
+      telefone: '',
+      top5: []
     }
   }
 
@@ -38,6 +34,7 @@ class homePerfil extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
+          id: res.id,
           nome: res.nome,
           estado: res.estado,
           endereco: res.endereco,
@@ -45,6 +42,95 @@ class homePerfil extends Component {
           sexo: res.sexo,
           telefone: res.telefone
         });
+
+
+        ApiService.montarGrafico(res.id)
+      .then(res =>{ 
+        let legenda = []
+        let data = []
+        Array.from(res).forEach(function(y){
+          legenda.push(y.investimento.nome)
+          data.push(y.valor)
+
+        })
+        this.setState({
+          chartData:{
+            labels:[...legenda],   
+            datasets:[
+                {
+                   label:'Teste',
+                   data:[...data],
+                   backgroundColor:[
+                       'rgba(33, 162, 70, 0.6)',
+                       'rgba(255, 99, 132, 0.6)',
+                       'rgba(54, 162, 235, 0.6)',
+                       'rgba(255, 159, 64, 0.6)',
+                       'rgba(75, 192, 192, 0.6)'
+                   ]
+                } 
+            ]
+           }
+        })  
+        });
+
+        ApiService.pegaDolar()
+        .then(res =>{ 
+          let legenda = []
+          let data = []
+          Array.from(res).forEach(function(y){
+            legenda.push(y.data)
+            data.push(y.fechamento)
+  
+          })
+          this.setState({
+            dolarData:{
+              labels:[...legenda],   
+              datasets:[
+                  {
+                     label:'Fechamento do dia',
+                     data:[...data],
+                     backgroundColor:[
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      
+
+                     ]
+                  } 
+              ]
+             }
+          })  
+          });
+
+        ApiService.top5(res.id)
+        .then(res =>{
+          this.setState({
+            top5:[...this.state.top5,...res]
+          })
+        })
+
       });
   }
   render() {
@@ -61,7 +147,8 @@ class homePerfil extends Component {
         </form>
         <div id="page-wrap">
           <div>
-            <h1 className="welcome">Bem vindo {this.state.nome}</h1>
+            <h1 className="welcome">Bem vindo, {this.state.nome}</h1>
+
           </div>
         </div>
         <div className="row">
@@ -69,7 +156,9 @@ class homePerfil extends Component {
             <div className="card car grafico">
               <h5 className="card-header labelgraph">Rendimento total</h5>
               <div className="card-body">
-                <PieChart />
+
+                <PieChart chartData={this.state.chartData} />
+
               </div>
             </div>
           </div>
@@ -77,7 +166,9 @@ class homePerfil extends Component {
             <div className="card car grafico2">
               <h5 className="card-header labelgraph">Investimento mais rentável</h5>
               <div className="card-body">
-                <LineChart />
+
+                <LineChart chartData={this.state.chartData} />
+
               </div>
             </div>
           </div>
@@ -85,9 +176,11 @@ class homePerfil extends Component {
         <div className="row">
           <div className="col-6 graficos mt-5">
             <div className="card car grafico3">
-              <h5 className="card-header labelgraph">Rendimento total</h5>
+
+              <h5 className="card-header labelgraph">Cotação do Dólar</h5>
               <div className="card-body">
-                <PieChart />
+                <DolarChart dolarData={this.state.dolarData} />
+
               </div>
             </div>
           </div>
@@ -96,7 +189,9 @@ class homePerfil extends Component {
               <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
               <img className='iconTop5 displayed coroa' src={top5} />
               <div className="card-body">
-                <ListaTop5 />
+
+                <ListaTop5 top5={this.state.top5}/>  
+
               </div>
             </div>
           </div>
@@ -105,4 +200,46 @@ class homePerfil extends Component {
     );
   }
 }
+
 export default homePerfil;
+/*
+chartData:{
+  labels:[
+     'Ação', 'Bolsa de valores', 'Título',
+     'Investimento', 'Ação 2'
+  ],   
+  datasets:[
+      {
+         label:'Teste',
+         data:[
+             13,
+             61,
+             43,
+             96,
+             74
+         ],
+         backgroundColor:[
+             'rgba(33, 162, 70, 0.6)',
+             'rgba(255, 99, 132, 0.6)',
+             'rgba(54, 162, 235, 0.6)',
+             'rgba(255, 159, 64, 0.6)',
+             'rgba(75, 192, 192, 0.6)'
+         ]
+      } 
+  ]
+ }
+
+
+ chartData:{
+  labels:[...legenda] ,
+  datasets:[
+   {
+      label:'Teste',
+      data:[...data],
+      backgroundColor:[
+          'rgba(33, 162, 70, 0.6)'
+      ]
+   } 
+  ]
+}*/
+

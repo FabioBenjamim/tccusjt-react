@@ -2,7 +2,9 @@ import './App.css';
 import { fallDown as Menu } from 'react-burger-menu';
 import React, { Component } from 'react';
 import logo from './images/Logo.png';
-import { Link, Redirect} from 'react-router-dom';
+
+import { Link} from 'react-router-dom';
+
 
 class SideBar extends Component {
     constructor(props){

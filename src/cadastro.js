@@ -4,6 +4,9 @@ import './App.css';
 import { Link, Redirect } from 'react-router-dom';
 import DadosPessoais from './cadastroDadosPessoais'
 import ApiService from './ApiService';
+import cpfMask from './mask';
+import tellMask from './mask';
+
 
 
 var style = {
@@ -22,27 +25,47 @@ class Cadastro extends Component{
             email: '',
             senha: '',
             nome: '',
-            estado: '',
+
+            estado: 'AC',
             endereco: '',
             idade: '',
-            sexo: '',
+            sexo: 'Masculino',
+
             telefone: '' 
     }
     this.state = this.stateLogin; 
   }
   escutadorDeInput = event => {
     const { name, value } = event.target;
+      this.setState({
+          [name]: value
+      });
+  
+  }
 
-    this.setState({
-        [name]: value
-    });
+  escutadorDeCpf = event => {
+    const { name, value } = event.target;
+      this.setState({
+          [name]: cpfMask(value)
+      });
+  
+  }
+
+  escutadorDeTell = event => {
+    const { name, value } = event.target;
+      this.setState({
+          [name]: tellMask(value)
+      });
+  
   }
 
   submitFormulario = () =>{
     ApiService.cadastraConta(JSON.stringify(
         {
-          email: this.state.email,
-          senha: this.state.senha,
+
+            email: this.state.email,
+            senha: this.state.senha,
+
           perfil: {
             cpf: this.state.cpf,
             nome: this.state.nome,
@@ -59,6 +82,9 @@ class Cadastro extends Component{
             return <Redirect to="/"></Redirect>
           }else
             alert("erro ao tentar criar a conta");
+
+            console.log(this.state)
+
         })
   }
 
@@ -110,27 +136,51 @@ class Cadastro extends Component{
                     onChange= { this.escutadorDeInput }
                     />
                   </div>
-                  <div className="col-4">
-                    <input type="text" 
-                    className="form-control"
-                    name="estado"
-                    placeholder="Estado"
-                    autoComplete="off"
-                    onChange= { this.escutadorDeInput }
-                    />
-                  </div>
+
+                  <select  required onChange =  { this.escutadorDeInput }  name="estado">
+                    <option value="Acre">AC</option>
+                    <option value="Alagoas">AL</option>
+                    <option value="Amapa">AP</option>
+                    <option value="Amazonas">AM</option>
+                    <option value="Bahia">BA</option>
+                    <option value="Ceara">CE</option>
+                    <option value="Distrito Federal">DF</option>
+                    <option value="Espirito Santo">ES</option>
+                    <option value="Goias">GO</option>
+                    <option value="Maranhao">MA</option>
+                    <option value="Mato Grosso">MT</option>
+                    <option value="Mato Grosso do Sul">MS</option>
+                    <option value="Minas Gerais">MG</option>
+                    <option value="Para">PA</option>
+                    <option value="Paraiba">PB</option>
+                    <option value="Parana">PR</option>
+                    <option value="Pernambuco">PE</option>
+                    <option value="Piaui">PI</option>
+                    <option value="Rio De Janeiro">RJ</option>
+                    <option value="Rio Grande Do Norte">RN</option>
+                    <option value="Rio Grande Do Sul">RS</option>
+                    <option value="Rondonia">RO</option>
+                    <option value="Roraima">RR</option>
+                    <option value="Santa Catarina">SC</option>
+                    <option value="Sao Paulo">SP</option>
+                    <option value="Sergipe">SE</option>
+                    <option value="Tocantins">TO</option>
+              </select>
                 </div>
                 <div className="row mt-5">
-                  <div className="col">
+                  <div className="col-4">
+
                     <input type="text"
                     name="telefone"
                     className="form-control" 
                     placeholder="Telefone"
                     autoComplete="off"
-                    onChange= { this.escutadorDeInput }
+
+                    onChange= { this.escutadorDeTell }
                     />
                   </div>
-                  <div className="col">
+                  <div className="col-4">
+
                     <input type="text" 
                     className="form-control"
                     name="idade"
@@ -139,24 +189,22 @@ class Cadastro extends Component{
                     onChange= { this.escutadorDeInput }
                     />
                   </div>
-                  <div className="col">
-                    <input type="text" 
-                    className="form-control"
-                    name="sexo"
-                    placeholder="Sexo"
-                    autoComplete="off"
-                    onChange= { this.escutadorDeInput }
-                    />
-                  </div>
+
+                  <select  required onChange =  { this.escutadorDeInput }  name="sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                  </select>
                 </div>
                 <div className="row">
                   <div className="col">
-                  <input className=" mt-5 form-control border-top-0 border-left-0 border-right-0 bor-col"
+                  <input className=" mt-5 form-control border-top-0 border-left-0 border-right-0 bor-col cpf-mask"
                     type="text"
-                    name="cpf" 
+                    name="cpf"
+                    maxLength="14"
                     placeholder="CPF"
                     autoComplete="off"
-                    onChange= { this.escutadorDeInput }
+                    onChange= { this.escutadorDeCpf }
+
                   />
                   </div>
                 </div>
@@ -169,7 +217,7 @@ class Cadastro extends Component{
               <div className="col-5 logo-meio">
                   <img src={ image } alt="Logo da empresa" style={ style }></img>
                   <p className="nome-empresa">ALGO ALTAMENTE PERSUASIVO E MOTIVACIONAL</p>
-              </div>
+              </div> 
             </div>
           </div>
         </div>

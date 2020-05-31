@@ -1,14 +1,10 @@
 import React,{Component} from 'react';
 import {Line,} from 'react-chartjs-2';
 
-class LineChart extends Component{
+class DolarChart extends Component{
     constructor(props){
-        super(props);
-
-        
-        this.state =  this.props
-            
-                
+        super(props);        
+        this.state =  this.props      
     }
 
 
@@ -20,23 +16,21 @@ class LineChart extends Component{
         fontSize: 8
     }
 
+
+
     render(){
         return(
             <div className="chart">
                 <Line
-
-                    data={this.props.chartData}
-
+                    data={this.props.dolarData}
                     options={{
                         title:{
                             display:this.props.displayTitle,
                             text:'Investimento mais rentável'
                         },
                         legend:{
-
                             display:this.props.displayLegend,
                             fontSize:this.props.fontSize
-
                         }
                     }}
             />
@@ -46,4 +40,4 @@ class LineChart extends Component{
 
 }
 
-export default LineChart;
+export default DolarChart;
