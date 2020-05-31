@@ -267,12 +267,12 @@ class investimentoSeguro extends Component {
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
             <button type="button" class="btn btn-dark ml-3">
-              <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.email } }}>
+              <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email } }}>
                 Investimento que juros mais subiram
               </Link>
             </button>
             <button type="button" class="btn btn-dark ml-3">
-              <Link to={{ pathname: '/investimentoSeguro', state: { email: this.props.email } }} className="text">
+              <Link to={{ pathname: '/investimentoSeguro', state: { email: this.props.location.state.email } }} className="text">
                 Investimento que os juros se manteve
               </Link>
             </button>

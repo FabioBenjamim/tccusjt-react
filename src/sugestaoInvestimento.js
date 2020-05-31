@@ -8,7 +8,6 @@ import SugestaoChart from './SugestaoChart';
 import SugestaoChart2 from './SugestaoChart2';
 import SugestaoChart3 from './SugestaoChart3';
 import SugestaoChart4 from './SugestaoChart4';
-import PieChart from './PieChart';
 import { formatarData } from './helpers';
 
 
@@ -268,12 +267,12 @@ class sugestaoInvestimento extends Component {
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
             <button type="button" class="btn btn-dark ml-3">
-              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.email } }} className="text">
+              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email } }} className="text">
                 Investimento que juros mais subiram
               </Link>
             </button>
             <button type="button" class="btn btn-dark ml-3">
-              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email: this.props.email } }}>
+              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email:this.props.location.state.email } }}>
                 Investimento que os juros se manteve
               </Link>
             </button>
