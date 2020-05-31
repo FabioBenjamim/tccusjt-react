@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import image from './images/Logo.png'
 import './App.css';
 import { Link, Redirect } from 'react-router-dom';
-import DadosPessoais from './cadastroDadosPessoais'
 import ApiService from './ApiService';
 import cpfMask from './mask';
 import tellMask from './mask';
-
 
 
 var style = {
@@ -25,16 +23,15 @@ class Cadastro extends Component{
             email: '',
             senha: '',
             nome: '',
-
             estado: 'AC',
             endereco: '',
             idade: '',
             sexo: 'Masculino',
-
             telefone: '' 
     }
     this.state = this.stateLogin; 
   }
+
   escutadorDeInput = event => {
     const { name, value } = event.target;
       this.setState({
@@ -62,10 +59,8 @@ class Cadastro extends Component{
   submitFormulario = () =>{
     ApiService.cadastraConta(JSON.stringify(
         {
-
             email: this.state.email,
             senha: this.state.senha,
-
           perfil: {
             cpf: this.state.cpf,
             nome: this.state.nome,
@@ -82,9 +77,7 @@ class Cadastro extends Component{
             return <Redirect to="/"></Redirect>
           }else
             alert("erro ao tentar criar a conta");
-
             console.log(this.state)
-
         })
   }
 
@@ -136,7 +129,6 @@ class Cadastro extends Component{
                     onChange= { this.escutadorDeInput }
                     />
                   </div>
-
                   <select  required onChange =  { this.escutadorDeInput }  name="estado">
                     <option value="Acre">AC</option>
                     <option value="Alagoas">AL</option>
@@ -169,18 +161,15 @@ class Cadastro extends Component{
                 </div>
                 <div className="row mt-5">
                   <div className="col-4">
-
                     <input type="text"
                     name="telefone"
                     className="form-control" 
                     placeholder="Telefone"
                     autoComplete="off"
-
                     onChange= { this.escutadorDeTell }
                     />
                   </div>
                   <div className="col-4">
-
                     <input type="text" 
                     className="form-control"
                     name="idade"
@@ -189,7 +178,6 @@ class Cadastro extends Component{
                     onChange= { this.escutadorDeInput }
                     />
                   </div>
-
                   <select  required onChange =  { this.escutadorDeInput }  name="sexo">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
@@ -204,7 +192,6 @@ class Cadastro extends Component{
                     placeholder="CPF"
                     autoComplete="off"
                     onChange= { this.escutadorDeCpf }
-
                   />
                   </div>
                 </div>

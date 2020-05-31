@@ -1,7 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
 
-
 const Top5 = props => {
     const lista = props.top5.map((linha) => {
         return (
@@ -44,4 +43,5 @@ class ListaTop5 extends Component {
         );
     }
 }
+
 export default ListaTop5;

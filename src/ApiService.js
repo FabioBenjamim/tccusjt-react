@@ -18,7 +18,6 @@ const ApiService = {
         return fetch(`http://localhost:8080/login?email=${email}`, {
                     method: 'GET', 
                     headers: {'content-type': 'application/json'},
-
                 })
     },
 
@@ -55,12 +54,13 @@ const ApiService = {
         .then(res => res.json())
     },
     
-    salvaTransacao: transacao =>{
-        return fetch('http://localhost:8080/api/transacao', {
-                    method: 'POST', 
-                    headers: {'content-type': 'application/json'},
-                    body: transacao
-                })
+    salvaTransacao: transacao => {
+        return fetch(`http://localhost:8080/api//transacao`,{
+            method: 'POST',
+            headers: {'content-type' : 'aplication/json'},
+            body: transacao
+        })
+        .then(res => res.json()) 
     },
 
     pegaDolar: () => {
@@ -71,27 +71,15 @@ const ApiService = {
         .then(res => res.json())
     },
     
-    sugestaoTop1: () => {
-        return fetch(`http://localhost:8080/api/acoes/sugestao`,{
-            method: 'GET',
-            headers: {'content-type' : 'aplication/json'},
-        })
-        .then(res => res.json())
-    },
-
-    buscaTodosInvestimentos: () =>{
-        return fetch(`http://localhost:8080/api/investimento`,{
-
-                })
-    },
-
-    buscarInvestimentos: () => {
-        return fetch('http://localhost:8080/investimento/consultar',{
+    pegaSugestao: (id) => {
+        return fetch(`http://localhost:8080/api/acoes/sugestao/${id}`,{
             method: 'GET',
             headers: {'content-type' : 'aplication/json'},
         })
         .then(res => res.json())
     }
+
+
 }
 
     
