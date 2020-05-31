@@ -5,6 +5,7 @@ import Tabela from './corpoTabela';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Acoes from './acoes';
 
+
 class meuInvestimento extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +17,7 @@ class meuInvestimento extends Component {
             idade: '',
             sexo: '',
             telefone: '',
+
             investimentos: [
             ],
             descricao: 'nulo',
@@ -31,7 +33,9 @@ class meuInvestimento extends Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
+
                     id: res.id,
+
                     nome: res.nome,
                     estado: res.estado,
                     endereco: res.endereco,
@@ -39,6 +43,7 @@ class meuInvestimento extends Component {
                     sexo: res.sexo,
                     telefone: res.telefone
                 });
+
                 ApiService.buscarInvestimentos(res.id)
         .then(res => res.json())
         .then(res => {
@@ -124,6 +129,7 @@ class meuInvestimento extends Component {
         const investimentosAtualizado = investimentos.filter(investimento => {
             return investimento.id !== id
         })
+
     }
 
     alertDescrição = () => {
@@ -133,7 +139,10 @@ class meuInvestimento extends Component {
     render() {
         return (
             <Fragment>
+
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
                 <SideBar perfil={this.state} email={this.props.location.state.email} />
                 <div className="row">
                     <div className="col-10 graficos mt-5">
@@ -144,6 +153,7 @@ class meuInvestimento extends Component {
                                     <thead>
                                         <tr>
                                             <th scope="col-3">#</th>
+
                                             <th scope="col-3">Valor</th>
                                             <th scope="col-3">Data de inclusão</th>
                                             <th scope="col">Tipo de investimento</th>
@@ -152,10 +162,12 @@ class meuInvestimento extends Component {
                                         </tr>
                                     </thead>
                                     <Tabela investimentos={this.state.investimentos} removeAutor={this.removeAutor}  setaDescricao = { this.setaDescricao }/>
+
                                 </table>
                                 <div className="">
                                     <div className="row mt-5">
                                         <div className="col-6">
+
                                         <input type="text"
                                                 className="form-control"
                                                 name="valor"
@@ -171,18 +183,22 @@ class meuInvestimento extends Component {
                                                 placeholder="Data inclusão"
                                                 autoComplete="off"
                                                 onChange={this.escutadorDeInput}
+
                                             />
                                         </div>
                                     </div>
                                     <div className="row mt-5">
                                         <div className="col">
+
                                         <input type="text"
                                                 className="form-control"
                                                 name="desc"
+
                                                 placeholder="Descrição"
                                                 autoComplete="off"
                                                 onChange={this.escutadorDeInput}
                                             />
+
                                         <div className="row mt-5">
                                             <div className="col-8">
                                                 <Acoes  escutadorDeInput= { this.escutadorDeInput } acoes= { this.state.acoes }/>
@@ -191,6 +207,7 @@ class meuInvestimento extends Component {
                                         </div>
                                         <div className="col">
                                             <button onClick={ this.submitInvestimento } className="btn btn-dark">Cadastrar</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -198,6 +215,7 @@ class meuInvestimento extends Component {
                         </div>
                     </div>
                 </div>
+
                 <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -216,6 +234,7 @@ class meuInvestimento extends Component {
                         </div>
                     </div>
                 </div>
+
             </Fragment>
         );
     }

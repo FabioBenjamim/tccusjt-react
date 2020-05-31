@@ -18,6 +18,7 @@ const ApiService = {
         return fetch(`http://localhost:8080/login?email=${email}`, {
                     method: 'GET', 
                     headers: {'content-type': 'application/json'},
+
                 })
     },
 
@@ -80,13 +81,17 @@ const ApiService = {
 
     buscaTodosInvestimentos: () =>{
         return fetch(`http://localhost:8080/api/investimento`,{
+
+                })
+    },
+
+    buscarInvestimentos: () => {
+        return fetch('http://localhost:8080/investimento/consultar',{
             method: 'GET',
             headers: {'content-type' : 'aplication/json'},
         })
         .then(res => res.json())
     }
-
-
 }
 
     

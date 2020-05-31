@@ -9,17 +9,20 @@ import LineChart from './LineChart';
 import PieChart from './PieChart';
 import DolarChart from './DolarChart';
 
+
 class homePerfil extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       id: '',
+
       nome: '',
       estado: '',
       endereco: '',
       idade: '',
       sexo: '',
+
       telefone: '',
       top5: []
     }
@@ -39,6 +42,7 @@ class homePerfil extends Component {
           sexo: res.sexo,
           telefone: res.telefone
         });
+
 
         ApiService.montarGrafico(res.id)
       .then(res =>{ 
@@ -126,6 +130,7 @@ class homePerfil extends Component {
             top5:[...this.state.top5,...res]
           })
         })
+
       });
   }
   render() {
@@ -143,6 +148,7 @@ class homePerfil extends Component {
         <div id="page-wrap">
           <div>
             <h1 className="welcome">Bem vindo, {this.state.nome}</h1>
+
           </div>
         </div>
         <div className="row">
@@ -150,7 +156,9 @@ class homePerfil extends Component {
             <div className="card car grafico">
               <h5 className="card-header labelgraph">Rendimento total</h5>
               <div className="card-body">
+
                 <PieChart chartData={this.state.chartData} />
+
               </div>
             </div>
           </div>
@@ -158,7 +166,9 @@ class homePerfil extends Component {
             <div className="card car grafico2">
               <h5 className="card-header labelgraph">Investimento mais rentável</h5>
               <div className="card-body">
+
                 <LineChart chartData={this.state.chartData} />
+
               </div>
             </div>
           </div>
@@ -166,9 +176,11 @@ class homePerfil extends Component {
         <div className="row">
           <div className="col-6 graficos mt-5">
             <div className="card car grafico3">
+
               <h5 className="card-header labelgraph">Cotação do Dólar</h5>
               <div className="card-body">
                 <DolarChart dolarData={this.state.dolarData} />
+
               </div>
             </div>
           </div>
@@ -177,7 +189,9 @@ class homePerfil extends Component {
               <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
               <img className='iconTop5 displayed coroa' src={top5} />
               <div className="card-body">
+
                 <ListaTop5 top5={this.state.top5}/>  
+
               </div>
             </div>
           </div>
@@ -186,6 +200,7 @@ class homePerfil extends Component {
     );
   }
 }
+
 export default homePerfil;
 /*
 chartData:{
@@ -227,3 +242,4 @@ chartData:{
    } 
   ]
 }*/
+
