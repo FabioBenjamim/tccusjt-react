@@ -33,28 +33,96 @@ class investimentoSeguro extends Component {
         }
     }
 
+        ApiService.pegaSugestao(59)
+          .then(res => {
+            let legenda = []
+            let data = []
+            Array.from(res).reverse().forEach(function (y) {
+              legenda.push(formatarData(y.data))
+              data.push(y.fechamentoAjustado)
 
-    componentDidMount() {
-        ApiService.buscarPerfil(this.props.location.state.email)
-            .then(res => res.json())
-            .then(res => {
-                this.setState({
-                    nome: res.nome,
-                    estado: res.estado,
-                    endereco: res.endereco,
-                    idade: res.idade,
-                    sexo: res.sexo,
-                    telefone: res.telefone
-                });
-            });
-    }
-    render() {
-        return (
-            <div className="body-homePerfil">
-                <div className="row">
-                    <div className="col-12">
-                        <SideBar perfil={this.state} email={this.props.location.state.email} />
-                    </div>
+            })
+            this.setState({
+              manteveData4: {
+                labels: [...legenda],
+                datasets: [
+                  {
+                    label: 'Fechamento do dia',
+                    data: [...data],
+                    backgroundColor: [
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                      'rgba(33, 162, 70, 0.6)',
+                    ]
+                  }
+                ]
+              }
+            })
+          });
+
+      });
+  }
+
+  render() {
+    return (
+      <div className="body-homePerfil">
+        <div className="row">
+          <div className="col-12">
+            <SideBar perfil={this.state} email={this.props.location.state.email}/>
+          </div>
+        </div>
+        {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
+        {/*    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />*/}
+        {/*    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*/}
+        {/*</form>*/}
+        <div id="page-wrap">
+          <div>
+            <h1 className="welcome">Sugestão de investimento {this.state.nome}</h1>
+          </div>
+        </div>
+        <div class="card cardSugestao">
+          <div class="card-header cardHeader">
+            <button type="button" class="btn btn-dark ml-3">
+              <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email } }}>
+                Investimento que juros mais subiram
+              </Link>
+            </button>
+            <button type="button" class="btn btn-dark ml-3">
+              <Link to={{ pathname: '/investimentoSeguro', state: { email: this.props.location.state.email } }} className="text">
+                Investimento que os juros se manteve
+              </Link>
+            </button>
+          </div>
+          <div class="card-body">
+            <div className="row">
+              <div className="col-6 graficoSugestao mt-5">
+                <div className="card car graficoSugestao">
+                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <div className="card-body">
+                    <ManteveChart manteveData={this.state.manteveData}/>
+                  </div>
                 </div>
                 <form className="form-inline my-2 my-lg-0 searchPosition">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

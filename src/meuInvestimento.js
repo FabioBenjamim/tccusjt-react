@@ -22,6 +22,8 @@ class meuInvestimento extends Component {
             ],
             descricao: 'nulo',
             data: '',
+
+            dataVencimento:'',
             id_investimento:'',
             acoes: [],
             id_acao: 1
@@ -156,7 +158,10 @@ class meuInvestimento extends Component {
 
                                             <th scope="col-3">Valor</th>
                                             <th scope="col-3">Data de inclusão</th>
+                                            <th scope="col-3">Data de vencimento</th>
                                             <th scope="col">Tipo de investimento</th>
+                                            <th scope="col-3">Taxa aplicada</th>
+                                            <th scope="col-3">Porcentagem da taxa</th>
                                             <th scope="col-3">Previsão</th>
                                             <th scope="col-3">Remover</th>
                                         </tr>
