@@ -78,7 +78,7 @@ const ApiService = {
     },
 
     buscaTodosInventimentos: () =>{
-        return fetch(`http://localhost:8080/api/transacoes`,{
+        return fetch(`http://localhost:8080/api/investimento`,{
             method: 'GET',
             headers: {'content-type' : 'aplication/json'},
         })

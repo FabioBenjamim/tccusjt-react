@@ -52,8 +52,8 @@ class CardCadastroInvestimento extends Component {
                 <div className="row">
                     <div className=" cardCadastroInv1 col-8">
                         <input className="mt-1" onChange={this.escutadorDeInput} name="valor" placeholder="valor" />
-                        <input className="ml-3" type='date' name='dataVencimento' onChange={this.escutadorDeInput} />
                         <input className="ml-3" type='date' name='data' onChange={this.escutadorDeInput} />
+                        <input className="ml-3" type='date' name='dataVencimento' onChange={this.escutadorDeInput} />
                     </div>
                 </div>
                 <div className="row">

@@ -4,7 +4,7 @@ const Options = props =>{
     
     const options = props.acoes.map((option)=>{
        return( 
-       <option value={ option.id }>{option.investimento.nome}</option>
+       <option value={ option.id }>{option.nome}</option>
        );
     });
 

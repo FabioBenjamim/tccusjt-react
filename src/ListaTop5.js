@@ -27,7 +27,6 @@ class ListaTop5 extends Component {
 
     render(){
         const { top5, } = this.props;
-        console.log(this.props.top5.investimento)
         return(
             <table className="table">
             <thead>
