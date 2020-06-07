@@ -55,14 +55,12 @@ const ApiService = {
     },
     
     salvaTransacao: transacao => {
-        return fetch(`http://localhost:8080/api//transacao`,{
-            method: 'POST',
-            headers: {'content-type' : 'aplication/json'},
+        return fetch('http://localhost:8080/api/transacao',{
+            method: 'POST', 
+            headers: {'content-type': 'application/json'},
             body: transacao
-        })
-        .then(res => res.json()) 
+        });
     },
-
     pegaDolar: () => {
         return fetch(`http://localhost:8080/api/dolar`,{
             method: 'GET',
@@ -85,6 +83,8 @@ const ApiService = {
             headers: {'content-type' : 'aplication/json'},
         })
     }
+
+    
 
 
 }

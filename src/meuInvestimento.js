@@ -4,6 +4,7 @@ import ApiService from './ApiService';
 import Tabela from './corpoTabela';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Acoes from './acoes';
+import Cardinvestimento from './CardCadastroInvestimento';
 
 class meuInvestimento extends Component {
     constructor(props) {
@@ -136,14 +137,8 @@ class meuInvestimento extends Component {
 
                             <div className="card-body">
                                 
-                               <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput}/>
-                                <div className="">
-                                    <div className="botao-direita">
-                                        <div className="col">
-                                            <button className="btn btn-dark mt-4" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cadastrar</button>
-                                        </div>
-                                    </div>
-                                </div>
+                               <Acoes acoes={this.state.acoes} escutadorDeInput ={this.escutadorDeInput}/>
+                                <Cardinvestimento escutadorDeInput ={ this.escutadorDeInput }  stateAntigo = { this.state } />
                             </div>
                         </div>
                         </div>
