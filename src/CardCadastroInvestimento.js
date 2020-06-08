@@ -37,6 +37,17 @@ class CardCadastroInvestimento extends Component {
                 }
                 
             }));
+            const investimento = {
+                valor: this.state.valor,
+                data: this.state.data,
+                dataVencimento: this.state.dataVencimento,
+                taxaPorcentagem: this.state.taxaPorcentagem,
+                nomeTipoTaxa: this.state.nomeTipoTaxa,
+                investimento: {
+                        id: this.props.stateAntigo.id_acao
+                } 
+            }
+            window.location.reload();
     }
 
     escutadorDeInput = event => {

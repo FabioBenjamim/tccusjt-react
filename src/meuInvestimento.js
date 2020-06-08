@@ -17,14 +17,13 @@ class meuInvestimento extends Component {
             idade: '',
             sexo: '',
             telefone: '',
-            investimentos: [
-            ],
+            investimentos: [],
             descricao: 'nulo',
             data: '',
             dataVencimento: '',
             id_investimento: '',
             taxaPorcentagem: '',
-            nomeTipoTaxa:'',
+            nomeTipoTaxa: '',
             acoes: []
         }
     }
@@ -53,10 +52,10 @@ class meuInvestimento extends Component {
             });
 
         ApiService.buscaTodosInventimentos()
-        .then(res => res.json())
-        .then(res => {
-            this.setState({ acoes: [...this.state.acoes, ...res] })
-        });
+            .then(res => res.json())
+            .then(res => {
+                this.setState({ acoes: [...this.state.acoes, ...res] })
+            });
     }
 
     escutadorDeInput = event => {
@@ -82,6 +81,12 @@ class meuInvestimento extends Component {
         })
     }
 
+    novoInvestimento = investimento =>{
+        this.setState({
+            investimentos: [...this.state.investimentos, investimento]
+        })
+    }
+
     removeAutor = (investimentoss, id) => {
 
         const { investimentos } = this.state;
@@ -89,6 +94,15 @@ class meuInvestimento extends Component {
         const investimentosAtualizado = investimentos.filter(investimento => {
             return investimento.id !== id
         })
+        ApiService.deleteInvestimento(id)
+            .then(res => {
+                if (res.ok) {
+                    this.setState({
+                        investimentos: [...investimentosAtualizado]
+                    })
+                }
+            })
+ 
     }
 
     alertDescrição = () => {
@@ -131,18 +145,18 @@ class meuInvestimento extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="collapse card car grafico mt-5" id="collapseExample">
                             <h5 className="card-header labelgraph">Cadastrar Investimento</h5>
 
                             <div className="card-body">
-                                
-                               <Acoes acoes={this.state.acoes} escutadorDeInput ={this.escutadorDeInput}/>
-                                <Cardinvestimento escutadorDeInput ={ this.escutadorDeInput }  stateAntigo = { this.state } />
+
+                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} />
+                                <Cardinvestimento novoInvestimento={ this.novoInvestimento } escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} />
                             </div>
                         </div>
-                        </div>
                     </div>
+                </div>
                 <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">

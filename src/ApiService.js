@@ -82,7 +82,16 @@ const ApiService = {
             method: 'GET',
             headers: {'content-type' : 'aplication/json'},
         })
+    },
+
+    deleteInvestimento: (id) =>{
+        return fetch(`http://localhost:8080/api/transacao/${id}`,{
+            method: 'DELETE',
+            headers: {'content-type' : 'aplication/json'},
+        })
     }
+
+    
 
     
 
