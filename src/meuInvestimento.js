@@ -105,6 +105,17 @@ class meuInvestimento extends Component {
  
     }
 
+    pegaValorMinimo = event =>{
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+       
+        let pegaValorMinimo = this.state.acoes.filter(acao =>{
+            return console.log(this.state.id_acao)
+        })
+    }
+
     alertDescrição = () => {
         alert('Salve');
     }
@@ -146,12 +157,12 @@ class meuInvestimento extends Component {
                             </div>
                         </div>
 
-                        <div className="collapse card car grafico mt-5" id="collapseExample">
+                        <div className="collapse card car grafico mt-5 mb-5" id="collapseExample">
                             <h5 className="card-header labelgraph">Cadastrar Investimento</h5>
 
                             <div className="card-body">
 
-                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} />
+                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} pegaValorMinimo={this.pegaValorMinimo}/>
                                 <Cardinvestimento novoInvestimento={ this.novoInvestimento } escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} />
                             </div>
                         </div>

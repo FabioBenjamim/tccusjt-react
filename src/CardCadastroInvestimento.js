@@ -21,14 +21,19 @@ class CardCadastroInvestimento extends Component {
         }
     }
 
-    cadastra = () => {
+    
+
+    cadastra = event => {
+        const acao = this.props.stateAntigo.acoes[this.props.stateAntigo.id_acao]
+        console.log(acao)
+        if(this.state.valor < acao.valorMinimo){
+            alert('Valor Minimo para essa renda é de: ' + acao.valorMinimo)
+            event.preventDefault()
+        }else{
         ApiService.salvaTransacao(JSON.stringify(
             {
                 valor: this.state.valor,
                 data: this.state.data,
-                dataVencimento: this.state.dataVencimento,
-                taxaPorcentagem: this.state.taxaPorcentagem,
-                nomeTipoTaxa: this.state.nomeTipoTaxa,
                 investimento: {
                         id: this.props.stateAntigo.id_acao
                 },
@@ -40,14 +45,12 @@ class CardCadastroInvestimento extends Component {
             const investimento = {
                 valor: this.state.valor,
                 data: this.state.data,
-                dataVencimento: this.state.dataVencimento,
-                taxaPorcentagem: this.state.taxaPorcentagem,
-                nomeTipoTaxa: this.state.nomeTipoTaxa,
                 investimento: {
                         id: this.props.stateAntigo.id_acao
                 } 
             }
             window.location.reload();
+        }
     }
 
     escutadorDeInput = event => {
@@ -62,15 +65,8 @@ class CardCadastroInvestimento extends Component {
             <div>
                 <div className="row">
                     <div className=" cardCadastroInv1 col-8">
-                        <input className="mt-1" onChange={this.escutadorDeInput} name="valor" placeholder="valor" />
+                        <input className="mt-1" onChange={this.escutadorDeInput } name="valor" placeholder="valor" />
                         <input className="ml-3" type='date' name='data' onChange={this.escutadorDeInput} />
-                        <input className="ml-3" type='date' name='dataVencimento' onChange={this.escutadorDeInput} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="cardCadastroInv2 col-8">
-                    <input className="mt-1" onChange={this.escutadorDeInput} name="nomeTipoTaxa" placeholder="nomeTipoTaxa" />
-                    <input className="mt-1 ml-3" onChange={this.escutadorDeInput} name="taxaPorcentagem" placeholder="valor" />
                     </div>
                 </div>
                 <div className="">
