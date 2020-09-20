@@ -16,7 +16,8 @@ class Login extends Component {
     this.stateLogin = {
       email: '',
       senha: '',
-      redirect: false
+      redirect: false,
+      pathname: ''
     }
     this.state = this.stateLogin;
   }
@@ -35,7 +36,17 @@ class Login extends Component {
         if (res.ok) {
           this.props.usuario.email = this.state.email
           this.props.usuario.senha = this.state.senha
-          this.setState({ redirect: true })
+          ApiService.buscarPerfil(this.props.usuario.email)
+            .then(res => res.json())
+            .then(res => (res.perfilInvestidor))
+            .then(perfilInvestidor => {
+              if (perfilInvestidor) {
+                this.setState({ pathname: '/homePerfil' })
+              } else {
+                this.setState({ pathname: '/formulario' })
+              }
+              this.setState({ redirect: true })
+            })
         } else
           alert('Falha ao fazer Login');
       });
@@ -44,7 +55,7 @@ class Login extends Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to={{
-        pathname: '/formulario',
+        pathname: this.state.pathname,
         state: {
           email: this.props.usuario.email
         }
