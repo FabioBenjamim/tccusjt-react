@@ -44,11 +44,11 @@ class Login extends Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to={{
-        pathname: '/homePerfil',
+        pathname: '/formulario',
         state: {
           email: this.props.usuario.email
         }
-      }}/>
+      }} />
     } else
       return (
         <div className="container">
@@ -63,19 +63,19 @@ class Login extends Component {
               <div className="row">
                 <div className="col-5 mt-5">
                   <input className=" form-control border-top-0 border-left-0 border-right-0 bor-col"
-                         type="text"
-                         autoFocus
-                         name="email"
-                         placeholder="Email"
-                         autoComplete="off"
-                         onChange={this.escutadorDeInput}
+                    type="text"
+                    autoFocus
+                    name="email"
+                    placeholder="Email"
+                    autoComplete="off"
+                    onChange={this.escutadorDeInput}
                   />
                   <input className="mt-5 mb-3 form-control border-top-0 border-left-0 border-right-0 bor-col"
-                         name="senha"
-                         placeholder="Senha"
-                         autoComplete="off"
-                         type="password"
-                         onChange={this.escutadorDeInput}
+                    name="senha"
+                    placeholder="Senha"
+                    autoComplete="off"
+                    type="password"
+                    onChange={this.escutadorDeInput}
                   />
                   <a className="text-links" href="/">ESQUECI MINHA SENHA</a>
                   <div className="row">

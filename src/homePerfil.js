@@ -26,7 +26,6 @@ class homePerfil extends Component {
     }
   }
 
-
   componentDidMount() {
     ApiService.buscarPerfil(this.props.location.state.email)
       .then(res => res.json())
@@ -140,7 +139,7 @@ class homePerfil extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email={this.props.location.state.email}/>
+            <SideBar perfil={this.state} email={this.props.location.state.email} />
           </div>
         </div>
         {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
@@ -157,7 +156,7 @@ class homePerfil extends Component {
             <div className="card car grafico">
               <h5 className="card-header labelgraph">Rendimento total</h5>
               <div className="card-body">
-                <PieChart chartData={this.state.chartData}/>
+                <PieChart chartData={this.state.chartData} />
               </div>
             </div>
           </div>
@@ -165,7 +164,7 @@ class homePerfil extends Component {
             <div className="card car grafico2">
               <h5 className="card-header labelgraph">Investimento mais rentável</h5>
               <div className="card-body">
-                <LineChart chartData={this.state.chartData}/>
+                <LineChart chartData={this.state.chartData} />
               </div>
             </div>
           </div>
@@ -175,16 +174,16 @@ class homePerfil extends Component {
             <div className="card car grafico3">
               <h5 className="card-header labelgraph">Cotação do Dólar</h5>
               <div className="card-body">
-                <DolarChart dolarData={this.state.dolarData}/>
+                <DolarChart dolarData={this.state.dolarData} />
               </div>
             </div>
           </div>
           <div className="col-6 graficos2 mt-5">
             <div className="card top5">
               <h5 className="card-header topHeader labelgraph">Top 5 Investimentos</h5>
-              <img className='iconTop5 displayed coroa' src={top5}/>
+              <img className='iconTop5 displayed coroa' src={top5} />
               <div className="card-body">
-                <ListaTop5 top5={this.state.top5}/>
+                <ListaTop5 top5={this.state.top5} />
               </div>
             </div>
           </div>

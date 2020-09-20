@@ -8,17 +8,19 @@ import HomePerfil from './homePerfil';
 import meuInvestimento from './meuInvestimento';
 import sugestaoInvestimento from './sugestaoInvestimento';
 import investimentoSeguro from './investimentoSeguro';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Formulario from './Formulario';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/"  exact= { true } component= { App } />
-      <Route path="/cadastro"  exact= { true } component= { Cadastro } />
-      <Route path="/homePerfil"  exact= { true } component= { HomePerfil } />
-      <Route path="/meuInvestimento"  exact= { true } component= { meuInvestimento } />
-      <Route path="/sugestaoInvestimento"  exact= { true } component= { sugestaoInvestimento } />
-      <Route path="/investimentoSeguro"  exact= { true } component= { investimentoSeguro } />
+      <Route path="/" exact={true} component={App} />
+      <Route path="/cadastro" exact={true} component={Cadastro} />
+      <Route path="/homePerfil" exact={true} component={HomePerfil} />
+      <Route path="/meuInvestimento" exact={true} component={meuInvestimento} />
+      <Route path="/sugestaoInvestimento" exact={true} component={sugestaoInvestimento} />
+      <Route path="/investimentoSeguro" exact={true} component={investimentoSeguro} />
+      <Route path="/formulario" exact={true} component={Formulario} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
