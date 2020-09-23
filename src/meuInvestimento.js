@@ -128,7 +128,7 @@ class meuInvestimento extends Component {
                 <div className="row">
                     <div className="col-10 graficos mt-5">
                         <div className="card car grafico">
-                            <h5 className="card-header labelgraph">Meus Investimentos</h5>
+                            <h5 className="card-header labelgraph">Carteira de Investimentos</h5>
                             <div className="card-body">
                                 <table className="table">
                                     <thead>

@@ -23,20 +23,22 @@ class Pergunta extends Component {
   render() {
     return (
       <div className="pergunta">
-        <p>{this.props.pergunta}</p>
-
-        <input type="radio" id={`${this.props.name}-1`} name={this.props.name} value="1" onClick={this.props.setResposta} />
+        <br />
+        <p className="perguntatxt">{this.props.pergunta}</p>
+        <input type="radio" id={`${this.props.name}-1`} name={this.props.name} value="1" onClick={this.props.setResposta} required/>
         <label for={`${this.props.name}-1`}>
           {this.props.resposta01}
         </label>
+        <br />
 
-        <input type="radio" id={`${this.props.name}-2`} name={this.props.name} value="2" onClick={this.props.setResposta} />
+        <input type="radio" id={`${this.props.name}-2`} name={this.props.name} value="2" onClick={this.props.setResposta} required/>
         <label for={`${this.props.name}-2`}>
           {this.props.resposta02}
         </label>
+        <br />
 
-        <input type="radio" id={`${this.props.name}-3`} name={this.props.name} value="3" onClick={this.props.setResposta} />
-        <label for={`${this.props.name}-3`}>
+        <input type="radio" id={`${this.props.name}-3`} name={this.props.name} value="3" onClick={this.props.setResposta} required/>
+        <label className for={`${this.props.name}-3`}>
           {this.props.resposta03}
         </label>
       </div>

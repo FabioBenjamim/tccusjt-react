@@ -46,7 +46,7 @@ class SideBar extends Component {
               email: this.props.email
             }
           }}>
-            Meus Investimentos
+            Carteira de Investimentos
           </Link>
 
           <Link className="menu-item" to={{

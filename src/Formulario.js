@@ -103,10 +103,10 @@ class Formulario extends Component {
     } else {
       return (
         <div className="row">
-          <div className="col-10 grafico mt-5">
+          <div className="col-10 graficos mt-5">
             <div className="card car grafico">
               <h5 className="card-header labelgraph">Qual seu perfil de investidor?</h5>
-              <div className="card-body">
+              <div className="card-body respostatxt">
                 <form action="#" onSubmit={this.adicionarPerfilInvestidor}>
                   <Pergunta
                     pergunta={"1 – Para que você investe ou investiria seu dinheiro?"}
@@ -188,7 +188,8 @@ class Formulario extends Component {
                     name={"pergunta10"}
                     setResposta={this.setResposta}
                   />
-                  <button type="submit">asdf</button>
+                  <br />
+                  <button type="submit">Enviar</button>
                 </form>
               </div>
             </div>

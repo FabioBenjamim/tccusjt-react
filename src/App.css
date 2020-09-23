@@ -347,3 +347,14 @@ p.blocktext {
 .labelgraph{
   text-align: center;
 }
+
+.perguntatxt{
+  font-size: 20px;
+  text-align: left !important;
+  font-weight: bold;
+}
+
+.respostatxt{
+  font-size: 16px;
+  text-align: left !important;
+}

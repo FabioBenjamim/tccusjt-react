@@ -103,6 +103,7 @@ class Cadastro extends Component {
                     placeholder="Email"
                     autoComplete="off"
                     onChange={this.escutadorDeInput}
+                    required
                   />
                   <input className="mt-5 mb-3 form-control border-top-0 border-left-0 border-right-0 bor-col"
                     name="senha"
@@ -110,6 +111,7 @@ class Cadastro extends Component {
                     autoComplete="off"
                     type="password"
                     onChange={this.escutadorDeInput}
+                    required
                   />
                   <p className="text-cadastro mt-5">DADOS PESSOAIS</p>
                   <input className="mt-5 mb-3 form-control border-top-0 border-left-0 border-right-0 bor-col"
@@ -118,6 +120,7 @@ class Cadastro extends Component {
                     autoComplete="off"
                     type="text"
                     onChange={this.escutadorDeInput}
+                    required
                   />
                   <div className="row mt-5">
                     <div className="col-8">
@@ -127,6 +130,7 @@ class Cadastro extends Component {
                         placeholder="Endereco"
                         autoComplete="off"
                         onChange={this.escutadorDeInput}
+                        required
                       />
                     </div>
                     <select required onChange={this.escutadorDeInput} name="estado">
@@ -167,6 +171,7 @@ class Cadastro extends Component {
                         placeholder="Telefone"
                         autoComplete="off"
                         onChange={this.escutadorDeTell}
+                        required
                       />
                     </div>
                     <div className="col-4">
@@ -176,6 +181,7 @@ class Cadastro extends Component {
                         placeholder="Idade"
                         autoComplete="off"
                         onChange={this.escutadorDeInput}
+                        required
                       />
                     </div>
                     <select required onChange={this.escutadorDeInput} name="sexo">
@@ -192,6 +198,9 @@ class Cadastro extends Component {
                         placeholder="CPF"
                         autoComplete="off"
                         onChange={this.escutadorDeCpf}
+                        minLength="11"
+                        maxLength="11"
+                        required
                       />
                     </div>
                   </div>
