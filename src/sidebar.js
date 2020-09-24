@@ -1,8 +1,10 @@
 import './App.css';
 import { fallDown as Menu } from 'react-burger-menu';
 import React, { Component } from 'react';
-import logo from './images/Logo.png';
+import logo from './images/Agressivo.jpg';
 import { Link } from 'react-router-dom';
+import ApiService from './ApiService';
+import conservador from './images/Conservador.png';
 
 class SideBar extends Component {
   constructor(props) {
@@ -13,7 +15,22 @@ class SideBar extends Component {
       endereco: '',
       idade: '',
       sexo: '',
-      telefone: ''
+      telefone: '',
+      ibagen: this.props.perfil.ibagen,
+      ibagenDaNuvem: null,
+      tipoInvestidor: ''
+    }
+  }
+
+  componentDidMount(){
+    console.log(this.props)
+  }
+  
+  pegaIbagen= () =>{
+    if(tipoInvestidor == "Conservador"){
+            this.setState({
+        ibagen: conservador
+      })
     }
   }
 
@@ -22,7 +39,7 @@ class SideBar extends Component {
       <div className="row">
         <Menu>
           <div>
-            <img className='iconUser displayed' src={logo}/>
+            <img className='iconUser displayed' src={this.props.perfil.ibagen}/>
             <a className="menu-item text-menu-bar" href="/">
               <p className="text-center">Nome: {this.props.perfil.nome}</p>
             </a>

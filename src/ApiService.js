@@ -99,6 +99,22 @@ const ApiService = {
       headers: { 'content-type': 'aplication/json' },
     })
   },
+
+  salvaImagem: () => {
+    return fetch(`http://localhost:8080/config/imagem`, {
+      method: 'GET',
+      headers: { 'content-type': 'image/jpeg' },
+    })
+  },
+
+  pegaImagem: (ibagen) => {
+    return fetch(`http://localhost:8080/config/imagem`, {
+      method: 'POST',
+      headers: { 'content-type': 'image/jpeg' },
+      body: ibagen
+    })
+  },
+
 }
 
 export default ApiService;

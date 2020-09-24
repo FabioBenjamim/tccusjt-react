@@ -9,6 +9,10 @@ import LineChart from './LineChart';
 import PieChart from './PieChart';
 import DolarChart from './DolarChart';
 import { formatarData } from './helpers';
+import conservador from './images/Conservador.png';
+import moderado from './images/Moderado.png';
+import agressivo from './images/Agressivo.png';
+import logo from './images/Logo.png';
 
 class homePerfil extends Component {
 
@@ -30,6 +34,7 @@ class homePerfil extends Component {
     ApiService.buscarPerfil(this.props.location.state.email)
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         this.setState({
           id: res.id,
           nome: res.nome,
@@ -37,8 +42,28 @@ class homePerfil extends Component {
           endereco: res.endereco,
           idade: res.idade,
           sexo: res.sexo,
-          telefone: res.telefone
+          telefone: res.telefone,
+          tipoInvestidor: res.perfilInvestidor
         });
+
+        if(this.state.tipoInvestidor == "Conservador"){
+          this.setState({
+            ibagen: conservador
+          })
+        } else if(this.state.tipoInvestidor == "Diversificado"){ 
+          this.setState({
+            ibagen: moderado
+          })
+        } else if(this.state.tipoInvestidor == "Agressivo"){
+          this.setState({
+            ibagen: agressivo
+          })
+        }
+        else {
+          this.setState({
+            ibagen: logo
+          })
+        }
 
         ApiService.montarGrafico(res.id)
           .then(res => {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <h1>Request</h1>
+    <script>
+        var formdata = new FormData();
+        formdata.append("file", fileInput.files[0], "/path/to/file");
+
+        var requestOptions = {
+            method: 'GET',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:8080/config/imagem", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>
