@@ -5,6 +5,10 @@ import Tabela from './corpoTabela';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Acoes from './acoes';
 import Cardinvestimento from './CardCadastroInvestimento';
+import conservador from './images/Conservador.png';
+import moderado from './images/Moderado.png';
+import agressivo from './images/Agressivo.png';
+import logo from './images/Logo.png';
 
 class meuInvestimento extends Component {
     constructor(props) {
@@ -39,8 +43,29 @@ class meuInvestimento extends Component {
                     endereco: res.endereco,
                     idade: res.idade,
                     sexo: res.sexo,
-                    telefone: res.telefone
+                    telefone: res.telefone,
+                    tipoInvestidor: res.perfilInvestidor
                 });
+
+                if(this.state.tipoInvestidor == "Conservador"){
+                    this.setState({
+                      ibagen: conservador
+                    })
+                  } else if(this.state.tipoInvestidor == "Diversificado"){ 
+                    this.setState({
+                      ibagen: moderado
+                    })
+                  } else if(this.state.tipoInvestidor == "Agressivo"){
+                    this.setState({
+                      ibagen: agressivo
+                    })
+                  }
+                  else {
+                    this.setState({
+                      ibagen: logo
+                    })
+                  }
+                
                 ApiService.buscarInvestimentos(res.id)
                     .then(res => res.json())
                     .then(res => {
@@ -81,7 +106,7 @@ class meuInvestimento extends Component {
         })
     }
 
-    novoInvestimento = investimento =>{
+    novoInvestimento = investimento => {
         this.setState({
             investimentos: [...this.state.investimentos, investimento]
         })
@@ -102,16 +127,16 @@ class meuInvestimento extends Component {
                     })
                 }
             })
- 
+
     }
 
-    pegaValorMinimo = event =>{
+    pegaValorMinimo = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
-       
-        let pegaValorMinimo = this.state.acoes.filter(acao =>{
+
+        let pegaValorMinimo = this.state.acoes.filter(acao => {
             return console.log(this.state.id_acao)
         })
     }
@@ -162,8 +187,8 @@ class meuInvestimento extends Component {
 
                             <div className="card-body">
 
-                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} pegaValorMinimo={this.pegaValorMinimo}/>
-                                <Cardinvestimento novoInvestimento={ this.novoInvestimento } escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} />
+                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} pegaValorMinimo={this.pegaValorMinimo} />
+                                <Cardinvestimento novoInvestimento={this.novoInvestimento} escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} />
                             </div>
                         </div>
                     </div>

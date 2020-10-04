@@ -115,6 +115,14 @@ const ApiService = {
     })
   },
 
+  atualizaPerfil: body =>{
+    return fetch(`http://localhost:8080/login/atualizaPerfil`,{
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: body
+    })
+  }
+
 }
 
 export default ApiService;

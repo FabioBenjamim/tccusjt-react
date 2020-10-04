@@ -358,3 +358,22 @@ p.blocktext {
   font-size: 16px;
   text-align: left !important;
 }
+
+.imgperfil{
+  border-radius: 50%;
+  width: 250px !important;
+  height: 250px !important;
+  border: solid black ;
+}
+
+.configperfil{
+  font-size: 20px;
+  color: black;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.botaodados{
+  width: 200px;
+  font-size: larger;
+}
