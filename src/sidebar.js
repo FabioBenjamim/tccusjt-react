@@ -1,10 +1,12 @@
 import './App.css';
 import { fallDown as Menu } from 'react-burger-menu';
 import React, { Component } from 'react';
-import logo from './images/Agressivo.jpg';
 import { Link } from 'react-router-dom';
-import ApiService from './ApiService';
 import conservador from './images/Conservador.png';
+import moderado from './images/Moderado.png';
+import agressivo from './images/Agressivo.png';
+import logo from './images/Logo.png';
+
 
 class SideBar extends Component {
   constructor(props) {
@@ -22,26 +24,36 @@ class SideBar extends Component {
     }
   }
 
-  // componentDidMount(){
-  //   console.log(this.props)
-  // }
-  
-  // pegaIbagen= () =>{
-  //   if(tipoInvestidor == "Conservador"){
-  //           this.setState({
-  //       ibagen: conservador
-  //     })
-  //   }
-  // }
+  componentDidMount(){
+    this.setState( { tipoInvestidor: this.props.perfil.tipoInvestidor } ) 
+    if(this.state.tipoInvestidor == "Conservador"){
+      this.setState({
+        ibagen: conservador
+      })
+    } else if(this.state.tipoInvestidor == "Diversificado"){ 
+      this.setState({
+        ibagen: moderado
+      })
+    } else if(this.state.tipoInvestidor == "Agressivo"){
+      this.setState({
+        ibagen: agressivo
+      })
+    }
+    else {
+      this.setState({
+        ibagen: logo
+      })
+    }
+  }
 
   render() {
     return (
       <div className="row">
         <Menu>
           <div>
-            <img className='iconUser displayed' src={this.props.perfil.ibagen}/>
+            <img className='iconUser displayed' style={{borderRadius: '50%'}}  src={this.props.perfil.ibagen}/>
             <a className="menu-item text-menu-bar" href="/">
-              <p className="text-center">Tipo de investidor: {this.props.perfil.tipoInvestidor}</p>
+              <p className="text-center">Tipo de Investidor: {this.props.perfil.tipoInvestidor}</p>
             </a>
           </div>
           {/*<a className="menu-item" href="/">*/}
@@ -73,6 +85,15 @@ class SideBar extends Component {
             }
           }}>
             Sugestão de Investimentos
+          </Link>
+
+          <Link className="menu-item" to={{
+            pathname: '/Configuracoes',
+            state: {
+              email: this.props.email
+            }
+          }}>
+            Configurações
           </Link>
 
           <Link className="menu-item" to="/">

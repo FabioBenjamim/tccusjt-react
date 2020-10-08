@@ -9,6 +9,10 @@ import SugestaoChart2 from './SugestaoChart2';
 import SugestaoChart3 from './SugestaoChart3';
 import SugestaoChart4 from './SugestaoChart4';
 import { formatarData } from './helpers';
+import conservador from './images/Conservador.png';
+import moderado from './images/Moderado.png';
+import agressivo from './images/Agressivo.png';
+import logo from './images/Logo.png';
 
 
 var style = {
@@ -45,8 +49,28 @@ class sugestaoInvestimento extends Component {
           endereco: res.endereco,
           idade: res.idade,
           sexo: res.sexo,
-          telefone: res.telefone
+          telefone: res.telefone,
+          tipoInvestidor: res.perfilInvestidor
         });
+        
+        if(this.state.tipoInvestidor == "Conservador"){
+          this.setState({
+            ibagen: conservador
+          })
+        } else if(this.state.tipoInvestidor == "Diversificado"){ 
+          this.setState({
+            ibagen: moderado
+          })
+        } else if(this.state.tipoInvestidor == "Agressivo"){
+          this.setState({
+            ibagen: agressivo
+          })
+        }
+        else {
+          this.setState({
+            ibagen: logo
+          })
+        }
 
         ApiService.pegaSugestao(2, 1)
           .then(res => {

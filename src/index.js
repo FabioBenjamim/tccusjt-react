@@ -9,6 +9,7 @@ import meuInvestimento from './meuInvestimento';
 import sugestaoInvestimento from './sugestaoInvestimento';
 import investimentoSeguro from './investimentoSeguro';
 import Formulario from './Formulario';
+import Configuracoes from './Configuracoes'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
@@ -21,6 +22,7 @@ ReactDOM.render(
       <Route path="/sugestaoInvestimento" exact={true} component={sugestaoInvestimento} />
       <Route path="/investimentoSeguro" exact={true} component={investimentoSeguro} />
       <Route path="/formulario" exact={true} component={Formulario} />
+      <Route path="/Configuracoes" exact={true} component={Configuracoes} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

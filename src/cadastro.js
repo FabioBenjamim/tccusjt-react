@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ApiService from './ApiService';
 import cpfMask from './mask';
 import tellMask from './mask';
+import { validate } from 'gerador-validador-cpf';
 
 
 var style = {
@@ -27,7 +28,8 @@ class Cadastro extends Component {
       endereco: '',
       idade: '',
       sexo: 'Masculino',
-      telefone: ''
+      telefone: '',
+      mensagemErro: '',
     }
     this.state = this.stateLogin;
   }
@@ -57,28 +59,54 @@ class Cadastro extends Component {
   }
 
   submitFormulario = () => {
-    ApiService.cadastraConta(JSON.stringify(
-      {
-        email: this.state.email,
-        senha: this.state.senha,
-        perfil: {
-          cpf: this.state.cpf.replaceAll(".", "").replaceAll("-", ""),
-          nome: this.state.nome,
-          estado: this.state.estado,
-          endereco: this.state.endereco,
-          idade: this.state.idade,
-          sexo: this.state.sexo,
-          telefone: this.state.telefone
-        }
-      }))
-      .then(res => {
-        if (res.ok) {
-          alert("conta criada com sucesso");
-          return <Redirect to="/"></Redirect>
-        } else
-          alert("erro ao tentar criar a conta");
-        console.log(this.state)
-      })
+    const cpfValido = validate(this.state.cpf);
+
+    if (cpfValido) {
+      ApiService.cadastraConta(JSON.stringify(
+        {
+          email: this.state.email,
+          senha: this.state.senha,
+          perfil: {
+            cpf: this.state.cpf.replaceAll(".", "").replaceAll("-", ""),
+            nome: this.state.nome,
+            estado: this.state.estado,
+            endereco: this.state.endereco,
+            idade: this.state.idade,
+            sexo: this.state.sexo,
+            telefone: this.state.telefone
+          }
+        }))
+        .then(res => {
+          if (res.ok) {
+            alert("conta criada com sucesso");
+            return <Redirect to="/"></Redirect>
+          } else
+            alert("erro ao tentar criar a conta");
+          console.log(this.state)
+        })
+    } else {
+      alert('CPF inválido')
+    }
+  }
+
+  testaCPF = (strCPF) => {
+    let Soma = 0;
+    let Resto;
+    if (strCPF == "00000000000") return false;
+
+    for (let i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
   }
 
   render() {
