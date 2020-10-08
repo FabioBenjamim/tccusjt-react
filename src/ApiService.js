@@ -56,7 +56,7 @@ const ApiService = {
   },
 
   prever: (id, data) => {
-    return fetch(`http://localhost:8080/api//transacao/prever/${id}&${data}`, {
+    return fetch(`http://localhost:8080/api/transacao/prever/${id}&${data}`, {
       method: 'GET',
       headers: { 'content-type': 'aplication/json' },
     })
@@ -78,8 +78,8 @@ const ApiService = {
       .then(res => res.json())
   },
 
-  pegaSugestao: (id) => {
-    return fetch(`http://localhost:8080/api/acoes/sugestao/${id}`, {
+  pegaSugestao: (idTipoSugestao, posicao) => {
+    return fetch(`http://localhost:8080/api/acoes/sugestao/${idTipoSugestao}&${posicao}`, {
       method: 'GET',
       headers: { 'content-type': 'aplication/json' },
     })

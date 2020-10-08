@@ -22,17 +22,17 @@ class SideBar extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log(this.props)
-  }
+  // componentDidMount(){
+  //   console.log(this.props)
+  // }
   
-  pegaIbagen= () =>{
-    if(tipoInvestidor == "Conservador"){
-            this.setState({
-        ibagen: conservador
-      })
-    }
-  }
+  // pegaIbagen= () =>{
+  //   if(tipoInvestidor == "Conservador"){
+  //           this.setState({
+  //       ibagen: conservador
+  //     })
+  //   }
+  // }
 
   render() {
     return (
@@ -41,7 +41,7 @@ class SideBar extends Component {
           <div>
             <img className='iconUser displayed' src={this.props.perfil.ibagen}/>
             <a className="menu-item text-menu-bar" href="/">
-              <p className="text-center">Nome: {this.props.perfil.nome}</p>
+              <p className="text-center">Tipo de investidor: {this.props.perfil.tipoInvestidor}</p>
             </a>
           </div>
           {/*<a className="menu-item" href="/">*/}

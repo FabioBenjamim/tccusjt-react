@@ -48,7 +48,7 @@ class investimentoSeguro extends Component {
           telefone: res.telefone
         });
 
-        ApiService.pegaSugestao(57)
+        ApiService.pegaSugestao(1, 1)
           .then(res => {
             let legenda = []
             let data = []
@@ -97,7 +97,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(51)
+        ApiService.pegaSugestao(1, 2)
           .then(res => {
             let legenda = []
             let data = []
@@ -146,7 +146,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(55)
+        ApiService.pegaSugestao(1, 3)
           .then(res => {
             let legenda = []
             let data = []
@@ -195,7 +195,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(59)
+        ApiService.pegaSugestao(1, 4)
           .then(res => {
             let legenda = []
             let data = []
