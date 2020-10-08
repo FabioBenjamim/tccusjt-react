@@ -3,8 +3,6 @@ import image from './images/Logo.png'
 import './App.css';
 import { Link, Redirect } from 'react-router-dom';
 import ApiService from './ApiService';
-import cpfMask from './mask';
-import tellMask from './mask';
 import { validate } from 'gerador-validador-cpf';
 
 
@@ -45,7 +43,7 @@ class Cadastro extends Component {
   escutadorDeCpf = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: cpfMask(value)
+      [name]: value
     });
 
   }
@@ -53,7 +51,7 @@ class Cadastro extends Component {
   escutadorDeTell = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: tellMask(value)
+      [name]: value
     });
 
   }
