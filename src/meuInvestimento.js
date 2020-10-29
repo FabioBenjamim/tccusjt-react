@@ -33,7 +33,7 @@ class meuInvestimento extends Component {
     }
 
     componentDidMount() {
-        ApiService.buscarPerfil(this.props.location.state.email)
+        ApiService.buscarPerfil(this.props.location.state.email, this.props.location.state.token)
             .then(res => res.json())
             .then(res => {
                 this.setState({
@@ -66,7 +66,7 @@ class meuInvestimento extends Component {
                     })
                   }
                 
-                ApiService.buscarInvestimentos(res.id)
+                ApiService.buscarInvestimentos(res.id, this.props.location.state.token)
                     .then(res => res.json())
                     .then(res => {
                         console.log(res)
@@ -76,7 +76,7 @@ class meuInvestimento extends Component {
                     });
             });
 
-        ApiService.buscaTodosInventimentos()
+        ApiService.buscaTodosInventimentos(this.props.location.state.token)
             .then(res => res.json())
             .then(res => {
                 this.setState({ acoes: [...this.state.acoes, ...res] })
@@ -91,7 +91,7 @@ class meuInvestimento extends Component {
     }
 
     chamarApi = dale => {
-        ApiService.prever(this.state.id_investimento, this.state.data)
+        ApiService.prever(this.state.id_investimento, this.state.data, this.props.location.state.token)
             .then(res => {
                 this.setState({
                     descricao: res.valor
@@ -119,7 +119,7 @@ class meuInvestimento extends Component {
         const investimentosAtualizado = investimentos.filter(investimento => {
             return investimento.id !== id
         })
-        ApiService.deleteInvestimento(id)
+        ApiService.deleteInvestimento(id,this.props.location.state.token)
             .then(res => {
                 if (res.ok) {
                     this.setState({
@@ -149,7 +149,7 @@ class meuInvestimento extends Component {
         return (
             <Fragment>
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-                <SideBar perfil={this.state} email={this.props.location.state.email} />
+                <SideBar perfil={this.state} email={this.props.location.state.email} token={ this.props.location.state.token } />
                 <div className="row">
                     <div className="col-10 graficos mt-5">
                         <div className="card car grafico">
@@ -187,8 +187,8 @@ class meuInvestimento extends Component {
 
                             <div className="card-body">
 
-                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} pegaValorMinimo={this.pegaValorMinimo} />
-                                <Cardinvestimento novoInvestimento={this.novoInvestimento} escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} />
+                                <Acoes acoes={this.state.acoes} escutadorDeInput={this.escutadorDeInput} pegaValorMinimo={this.pegaValorMinimo} token={ this.props.location.state.token }/>
+                                <Cardinvestimento novoInvestimento={this.novoInvestimento} escutadorDeInput={this.escutadorDeInput} stateAntigo={this.state} token={ this.props.location.state.token } />
                             </div>
                         </div>
                     </div>

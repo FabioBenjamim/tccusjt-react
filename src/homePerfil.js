@@ -26,12 +26,13 @@ class homePerfil extends Component {
       idade: '',
       sexo: '',
       telefone: '',
-      top5: []
+      top5: [],
+      token: ""
     }
   }
 
   componentDidMount() {
-    ApiService.buscarPerfil(this.props.location.state.email)
+    ApiService.buscarPerfil(this.props.location.state.email,this.props.location.state.token)
       .then(res => res.json())
       .then(res => {
         console.log(res)
@@ -65,7 +66,7 @@ class homePerfil extends Component {
           })
         }
 
-        ApiService.montarGrafico(res.id)
+        ApiService.montarGrafico(res.id, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -99,7 +100,7 @@ class homePerfil extends Component {
             })
           });
 
-        ApiService.pegaDolar()
+        ApiService.pegaDolar(this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -150,7 +151,7 @@ class homePerfil extends Component {
             })
           });
 
-        ApiService.top5(res.id)
+        ApiService.top5(res.id, this.props.location.state.token)
           .then(res => {
             this.setState({
               top5: [...this.state.top5, ...res]
@@ -164,7 +165,7 @@ class homePerfil extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email={this.props.location.state.email} />
+            <SideBar perfil={this.state} email={this.props.location.state.email} token={ this.props.location.state.token }/>
           </div>
         </div>
         {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}

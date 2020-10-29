@@ -35,7 +35,7 @@ class Configuracoes extends Component {
     }
 
     componentDidMount() {
-        ApiService.buscarPerfil(this.props.location.state.email)
+        ApiService.buscarPerfil(this.props.location.state.email,this.props.location.state.token)
             .then(res => res.json())
             .then(res => {
                 console.log(res)
@@ -112,7 +112,7 @@ class Configuracoes extends Component {
                     idade: this.state.idade,
                     sexo: this.state.sexo,
                     telefone: this.state.telefone
-            }))
+            }),this.props.location.state.token)
             .then(res => {
                 if (res.ok) {
                   alert("conta atualizada com sucesso");

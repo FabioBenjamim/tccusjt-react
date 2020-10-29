@@ -39,7 +39,7 @@ class sugestaoInvestimento extends Component {
 
 
   componentDidMount() {
-    ApiService.buscarPerfil(this.props.location.state.email)
+    ApiService.buscarPerfil(this.props.location.state.email, this.props.location.state.token)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -72,7 +72,7 @@ class sugestaoInvestimento extends Component {
           })
         }
 
-        ApiService.pegaSugestao(2, 1)
+        ApiService.pegaSugestao(2, 1, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -121,7 +121,7 @@ class sugestaoInvestimento extends Component {
             })
           });
 
-        ApiService.pegaSugestao(2, 2)
+        ApiService.pegaSugestao(2, 2, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -170,7 +170,7 @@ class sugestaoInvestimento extends Component {
             })
           });
 
-        ApiService.pegaSugestao(2, 3)
+        ApiService.pegaSugestao(2, 3, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -219,7 +219,7 @@ class sugestaoInvestimento extends Component {
             })
           });
 
-        ApiService.pegaSugestao(2, 4)
+        ApiService.pegaSugestao(2, 4, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -276,7 +276,7 @@ class sugestaoInvestimento extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email={this.props.location.state.email}/>
+            <SideBar perfil={this.state} email={this.props.location.state.email} token={ this.props.location.state.token }/>
           </div>
         </div>
         {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
@@ -291,12 +291,12 @@ class sugestaoInvestimento extends Component {
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
             <button type="button" class="btn btn-dark ml-3">
-              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email } }} className="text">
+              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email, token: this.props.location.state.token } }} className="text">
                 Investimento que juros mais subiram
               </Link>
             </button>
             <button type="button" class="btn btn-dark ml-3">
-              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email:this.props.location.state.email } }}>
+              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email:this.props.location.state.email, token: this.props.location.state.token } }}>
                 Investimento que os juros se manteve
               </Link>
             </button>
@@ -331,7 +331,7 @@ class sugestaoInvestimento extends Component {
               </div>
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Oi</h5>
+                  <h5 className="card-header labelgraph">sadasd</h5>
                   <div className="card-body">
                     <SugestaoChart4 sugestaoData4={this.state.sugestaoData4}/>
                   </div>

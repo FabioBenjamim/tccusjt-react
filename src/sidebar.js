@@ -63,7 +63,8 @@ class SideBar extends Component {
           <Link className="menu-item" to={{
             pathname: '/homePerfil',
             state: {
-              email: this.props.email
+              email: this.props.email,
+              token: this.props.token
             }
           }}>
             Minha Conta
@@ -72,7 +73,8 @@ class SideBar extends Component {
           <Link className="menu-item" to={{
             pathname: '/meuInvestimento',
             state: {
-              email: this.props.email
+              email: this.props.email,
+              token: this.props.token
             }
           }}>
             Carteira de Investimentos
@@ -81,7 +83,8 @@ class SideBar extends Component {
           <Link className="menu-item" to={{
             pathname: '/sugestaoInvestimento',
             state: {
-              email: this.props.email
+              email: this.props.email,
+              token: this.props.token
             }
           }}>
             Sugestão de Investimentos
@@ -90,7 +93,8 @@ class SideBar extends Component {
           <Link className="menu-item" to={{
             pathname: '/Configuracoes',
             state: {
-              email: this.props.email
+              email: this.props.email,
+              token: this.props.token
             }
           }}>
             Configurações

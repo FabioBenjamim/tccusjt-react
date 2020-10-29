@@ -9,6 +9,10 @@ import ManteveChart2 from './ManteveChart2';
 import ManteveChart3 from './ManteveChart3';
 import ManteveChart4 from './ManteveChart4';
 import { formatarData } from './helpers';
+import conservador from './images/Conservador.png';
+import moderado from './images/Moderado.png';
+import agressivo from './images/Agressivo.png';
+import logo from './images/Logo.png';
 
 
 var style = {
@@ -35,7 +39,7 @@ class investimentoSeguro extends Component {
 
 
   componentDidMount() {
-    ApiService.buscarPerfil(this.props.location.state.email)
+    ApiService.buscarPerfil(this.props.location.state.email, this.props.location.state.token)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -45,10 +49,30 @@ class investimentoSeguro extends Component {
           endereco: res.endereco,
           idade: res.idade,
           sexo: res.sexo,
-          telefone: res.telefone
+          telefone: res.telefone,
+          tipoInvestidor: res.perfilInvestidor
         });
 
-        ApiService.pegaSugestao(1, 1)
+        if(this.state.tipoInvestidor == "Conservador"){
+          this.setState({
+            ibagen: conservador
+          })
+        } else if(this.state.tipoInvestidor == "Diversificado"){ 
+          this.setState({
+            ibagen: moderado
+          })
+        } else if(this.state.tipoInvestidor == "Agressivo"){
+          this.setState({
+            ibagen: agressivo
+          })
+        }
+        else {
+          this.setState({
+            ibagen: logo
+          })
+        }
+
+        ApiService.pegaSugestao(1, 1, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -97,7 +121,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(1, 2)
+        ApiService.pegaSugestao(1, 2,this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -146,7 +170,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(1, 3)
+        ApiService.pegaSugestao(1, 3,this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -195,7 +219,7 @@ class investimentoSeguro extends Component {
             })
           });
 
-        ApiService.pegaSugestao(1, 4)
+        ApiService.pegaSugestao(1, 4, this.props.location.state.token)
           .then(res => {
             let legenda = []
             let data = []
@@ -252,7 +276,7 @@ class investimentoSeguro extends Component {
       <div className="body-homePerfil">
         <div className="row">
           <div className="col-12">
-            <SideBar perfil={this.state} email={this.props.location.state.email}/>
+            <SideBar perfil={this.state} email={this.props.location.state.email} token={ this.props.location.state.token } />
           </div>
         </div>
         {/*<form className="form-inline my-2 my-lg-0 searchPosition">*/}
@@ -267,12 +291,12 @@ class investimentoSeguro extends Component {
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
             <button type="button" class="btn btn-dark ml-3">
-              <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email } }}>
+              <Link className="text" to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email , token:this.props.location.state.token} }}>
                 Investimento que juros mais subiram
               </Link>
             </button>
             <button type="button" class="btn btn-dark ml-3">
-              <Link to={{ pathname: '/investimentoSeguro', state: { email: this.props.location.state.email } }} className="text">
+              <Link to={{ pathname: '/investimentoSeguro', state: { email: this.props.location.state.email, token:this.props.location.state.token } }} className="text">
                 Investimento que os juros se manteve
               </Link>
             </button>

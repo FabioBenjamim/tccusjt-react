@@ -12,7 +12,8 @@ class App extends Component{
   state = {
     usuario : {
       email: '',
-      senha: ''
+      senha: '',
+      token: ''
     }
   }
 

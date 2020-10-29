@@ -41,7 +41,7 @@ class CardCadastroInvestimento extends Component {
                     id: this.props.stateAntigo.id
                 }
                 
-            }));
+            }), this.props.token);
             const investimento = {
                 valor: this.state.valor,
                 data: this.state.data,
@@ -49,7 +49,7 @@ class CardCadastroInvestimento extends Component {
                         id: this.props.stateAntigo.id_acao
                 } 
             }
-            window.location.reload();
+            //window.location.reload();
         }
     }
 

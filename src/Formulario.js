@@ -61,7 +61,7 @@ class Formulario extends Component {
 
     const perfilInvestidor = this.criarPerfilInvestidor();
 
-    const cpf = await ApiService.buscarPerfil(this.props.location.state.email)
+    const cpf = await ApiService.buscarPerfil(this.props.location.state.email,this.props.location.state.token)
       .then(res => res.json())
       .then(res => (res.cpf))
 
@@ -70,7 +70,7 @@ class Formulario extends Component {
       perfil_investidor: perfilInvestidor
     }
 
-    ApiService.adicionarPerfilInvestidor(JSON.stringify(corpo)).then(
+    ApiService.adicionarPerfilInvestidor(JSON.stringify(corpo),this.props.location.state.token).then(
       res => {
         this.setState({ redirecionar: true });
       }

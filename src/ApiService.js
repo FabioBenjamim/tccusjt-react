@@ -4,107 +4,148 @@ const baseURL = Config.url ? Config.url : 'http://localhost:8080';
 
 const ApiService = {
   cadastraConta: conta => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer GkLEP_mfMmOXy0iDtKKWnoDFXkY");
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
       body: conta
     })
   },
 
   fazerLogin: conta => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer GkLEP_mfMmOXy0iDtKKWnoDFXkY");
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login/autentica`, {
       method: 'POST',
-      headers: { 'Content-type': 'application/json' },
+      headers: myHeaders,
       body: conta
     })
   },
 
-  adicionarPerfilInvestidor: corpo => {
+  adicionarPerfilInvestidor: (corpo, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login`, {
       method: 'PUT',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
       body: corpo
     })
   },
 
-  buscarPerfil: email => {
+  buscarPerfil: (email, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",  token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login?email=${email}`, {
       method: 'GET',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
     })
+    
   },
 
-  buscarInvestimentos: id => {
+  buscarInvestimentos: (id, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/transacoes/usuario/${id}`, {
       method: 'GET',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
     })
 
   },
 
-  montarGrafico: id => {
+  montarGrafico: (id, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     console.log(id)
     return fetch(`${baseURL}/api/transacoes/lucro/${id}`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
       .then(res => res.json())
   },
 
-  top5: idUsuario => {
+  top5: (idUsuario, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/transacoes/top/${idUsuario} & ${5}`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
       .then(res => res.json())
   },
 
-  prever: (id, data) => {
-    return fetch(`${baseURL}/api//transacao/prever/${id}&${data}`, {
+  prever: (id, data, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
+    return fetch(`${baseURL}/api/transacao/prever/${id}&${data}`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
       .then(res => res.json())
   },
 
-  salvaTransacao: transacao => {
+  salvaTransacao: (transacao, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/transacao`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
       body: transacao
     });
   },
-  pegaDolar: () => {
+  pegaDolar: (token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/dolar`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
       .then(res => res.json())
   },
 
-  pegaSugestao: (idTipoSugestao, posicao) => {
+  pegaSugestao: (idTipoSugestao, posicao, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/acoes/sugestao/${idTipoSugestao}&${posicao}`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
       .then(res => res.json())
   },
 
-  buscaTodosInventimentos: () => {
+  buscaTodosInventimentos: (token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/investimento`, {
       method: 'GET',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
   },
 
-  deleteInvestimento: (id) => {
+  deleteInvestimento: (id, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/api/transacao/${id}`, {
       method: 'DELETE',
-      headers: { 'content-type': 'aplication/json' },
+      headers: myHeaders,
     })
   },
 
   salvaImagem: () => {
+    
     return fetch(`${baseURL}/config/imagem`, {
       method: 'GET',
       headers: { 'content-type': 'image/jpeg' },
@@ -119,13 +160,32 @@ const ApiService = {
     })
   },
 
-  atualizaPerfil: body => {
+  atualizaPerfil: (body, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login/atualizaPerfil`, {
       method: 'PUT',
-      headers: { 'content-type': 'application/json' },
+      headers: myHeaders,
       body: body
     })
+  },
+
+  pegaToken: (email,senha) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic Y2xpZW50OjEyMw==");
+    var formdata = new FormData();
+    formdata.append("grant_type", "password");
+    formdata.append("username", email);
+    formdata.append("password", senha);
+    return fetch("http://localhost:8081/oauth/token", {
+      method: 'POST',
+      headers: myHeaders,
+      body: formdata,
+      redirect: 'follow'
+    })
   }
+
 
 }
 

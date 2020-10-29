@@ -17,7 +17,8 @@ class Login extends Component {
       email: '',
       senha: '',
       redirect: false,
-      pathname: ''
+      pathname: '',
+      token: ''
     }
     this.state = this.stateLogin;
   }
@@ -31,12 +32,14 @@ class Login extends Component {
   }
 
   submitFormulario = () => {
-    ApiService.fazerLogin(JSON.stringify(this.state))
+    ApiService.pegaToken(this.state.email, this.state.senha)
+      .then(res => res.json())
       .then(res => {
-        if (res.ok) {
+        if (res.access_token != null) {
           this.props.usuario.email = this.state.email
           this.props.usuario.senha = this.state.senha
-          ApiService.buscarPerfil(this.props.usuario.email)
+          this.props.usuario.token = res.access_token
+          ApiService.buscarPerfil(this.props.usuario.email, "Bearer " + res.access_token)
             .then(res => res.json())
             .then(res => (res.perfilInvestidor))
             .then(perfilInvestidor => {
@@ -47,9 +50,11 @@ class Login extends Component {
               }
               this.setState({ redirect: true })
             })
-        } else
+        } else {
           alert('Falha ao fazer Login');
+        }
       });
+      console.log(this.state)
   }
 
   render() {
@@ -57,7 +62,9 @@ class Login extends Component {
       return <Redirect to={{
         pathname: this.state.pathname,
         state: {
-          email: this.props.usuario.email
+          email: this.props.usuario.email,
+          senha: this.props.usuario.senha,
+          token: "Bearer " + this.props.usuario.token
         }
       }} />
     } else
@@ -91,7 +98,7 @@ class Login extends Component {
                   <a className="text-links" href="/">ESQUECI MINHA SENHA</a>
                   <div className="row">
                     <div className="col botao-centro">
-                      <button onClick={this.submitFormulario} className="btn btn-dark botao mt-5">ENTRAR</button>
+                      <button onClick={ this.submitFormulario } className="btn btn-dark botao mt-5">ENTRAR</button>
                     </div>
                   </div>
                 </div>

@@ -73,7 +73,7 @@ class Cadastro extends Component {
             sexo: this.state.sexo,
             telefone: this.state.telefone
           }
-        }))
+        }),this.props.location.state.token)
         .then(res => {
           if (res.ok) {
             alert("conta criada com sucesso");
