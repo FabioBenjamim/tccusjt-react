@@ -60,28 +60,48 @@ class Cadastro extends Component {
     const cpfValido = validate(this.state.cpf);
 
     if (cpfValido) {
-      ApiService.cadastraConta(JSON.stringify(
+      ApiService.criaUserAuth(JSON.stringify(
         {
+          name: this.state.nome,
           email: this.state.email,
-          senha: this.state.senha,
-          perfil: {
-            cpf: this.state.cpf.replaceAll(".", "").replaceAll("-", ""),
-            nome: this.state.nome,
-            estado: this.state.estado,
-            endereco: this.state.endereco,
-            idade: this.state.idade,
-            sexo: this.state.sexo,
-            telefone: this.state.telefone
-          }
-        }),this.props.location.state.token)
-        .then(res => {
-          if (res.ok) {
-            alert("conta criada com sucesso");
-            return <Redirect to="/"></Redirect>
-          } else
-            alert("erro ao tentar criar a conta");
-          console.log(this.state)
-        })
+          password: this.state.senha,
+          roles:[
+            "ROLE_ADMIN",
+            "ROLE_CLIENT"
+          ]
+        }
+      ))
+      .then(res => {
+        if(res.ok){
+          ApiService.pegaToken(this.state.email,this.state.senha)
+          .then(res => res.json() )
+          .then(res =>{
+            console.log(res.access_token)
+            ApiService.cadastraConta(JSON.stringify(
+              {
+                email: this.state.email,
+                senha: this.state.senha,
+                perfil: {
+                  cpf: this.state.cpf.replaceAll(".", "").replaceAll("-", ""),
+                  nome: this.state.nome,
+                  estado: this.state.estado,
+                  endereco: this.state.endereco,
+                  idade: this.state.idade,
+                  sexo: this.state.sexo,
+                  telefone: this.state.telefone
+                }
+              }),"Bearer " + res.access_token)
+              .then(res => {
+                if (res.ok) {
+                  alert("conta criada com sucesso");
+                  return <Redirect to="/"></Redirect>
+                } else
+                  alert("erro ao tentar criar a conta");
+                console.log(this.state)
+              })
+          })
+        }
+      })
     } else {
       alert('CPF inválido')
     }

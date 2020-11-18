@@ -32,6 +32,7 @@ class homePerfil extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.location.state.token)
     ApiService.buscarPerfil(this.props.location.state.email,this.props.location.state.token)
       .then(res => res.json())
       .then(res => {

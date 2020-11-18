@@ -1,11 +1,12 @@
+import { post } from 'jquery';
 import Config from './config';
 
 const baseURL = Config.url ? Config.url : 'http://localhost:8080';
 
 const ApiService = {
-  cadastraConta: conta => {
+  cadastraConta: (conta,token) => {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer GkLEP_mfMmOXy0iDtKKWnoDFXkY");
+    myHeaders.append("Authorization", token);
     myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login`, {
       method: 'POST',
@@ -14,9 +15,9 @@ const ApiService = {
     })
   },
 
-  fazerLogin: conta => {
+  fazerLogin: (conta, token) => {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer GkLEP_mfMmOXy0iDtKKWnoDFXkY");
+    myHeaders.append("Authorization", token);
     myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login/autentica`, {
       method: 'POST',
@@ -184,7 +185,15 @@ const ApiService = {
       body: formdata,
       redirect: 'follow'
     })
+  },
+  criaUserAuth: body =>{
+    return fetch('http://localhost:8081/user',{
+      method: 'POST',
+      headers: { "Content-Type" : "application/json"},
+      body: body
+    })
   }
+
 
 
 }

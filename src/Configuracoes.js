@@ -126,7 +126,8 @@ class Configuracoes extends Component {
             return <Redirect to={{
                 pathname: '/Formulario',
                 state: {
-                    email: this.props.location.state.email
+                    email: this.props.location.state.email,
+                    token: this.props.location.state.token
                 }
             }} />
         } else {
