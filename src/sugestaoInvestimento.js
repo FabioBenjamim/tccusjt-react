@@ -295,13 +295,18 @@ class sugestaoInvestimento extends Component {
         <div class="card cardSugestao">
           <div class="card-header cardHeader">
             <button type="button" class="btn btn-dark ml-3">
-              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email, token: this.props.location.state.token } }} className="text">
+              <Link to={{ pathname: '/sugestaoInvestimento', state: { email: this.props.location.state.email, token: this.props.location.state.token, id: this.props.location.state.id } }} className="text">
                 Investimento que juros mais subiram
               </Link>
             </button>
             <button type="button" class="btn btn-dark ml-3">
-              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email:this.props.location.state.email, token: this.props.location.state.token } }}>
+              <Link className="text" to={{ pathname: '/investimentoSeguro', state: { email:this.props.location.state.email, token: this.props.location.state.token, id: this.props.location.state.id } }}>
                 Investimento que os juros se manteve
+              </Link>
+            </button>
+           < button type="button" class="btn btn-dark ml-3">
+              <Link to={{ pathname: '/sugestaoP', state: { email: this.props.location.state.email, token:this.props.location.state.token, id: this.props.location.state.id } }} className="text">
+                Sugestao Personalizada
               </Link>
             </button>
           </div>
