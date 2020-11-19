@@ -124,6 +124,17 @@ const ApiService = {
       .then(res => res.json())
   },
 
+  pegaSugestaoP: (idUsuario, posicao, token) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    myHeaders.append("Content-Type", "application/json");
+    return fetch(`${baseURL}/api/sugestao/${idUsuario}&${posicao}`, {
+      method: 'GET',
+      headers: myHeaders,
+    })
+      .then(res => res.json())
+  },
+
   buscaTodosInventimentos: (token) => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", token);

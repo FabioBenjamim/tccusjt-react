@@ -10,6 +10,7 @@ import sugestaoInvestimento from './sugestaoInvestimento';
 import investimentoSeguro from './investimentoSeguro';
 import Formulario from './Formulario';
 import Configuracoes from './Configuracoes'
+import sugestaoP from './sugestaoP';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
@@ -23,6 +24,7 @@ ReactDOM.render(
       <Route path="/investimentoSeguro" exact={true} component={investimentoSeguro} />
       <Route path="/formulario" exact={true} component={Formulario} />
       <Route path="/Configuracoes" exact={true} component={Configuracoes} />
+      <Route path="/sugestaoP" exact={true} component={sugestaoP} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

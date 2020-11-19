@@ -76,6 +76,7 @@ class investimentoSeguro extends Component {
           .then(res => {
             let legenda = []
             let data = []
+            this.setState( { sugestao1: res[0].investimento.nome } )
             Array.from(res).reverse().forEach(function (y) {
               legenda.push(formatarData(y.data))
               data.push(y.fechamentoAjustado)
@@ -125,6 +126,7 @@ class investimentoSeguro extends Component {
           .then(res => {
             let legenda = []
             let data = []
+            this.setState( { sugestao2: res[0].investimento.nome } )
             Array.from(res).reverse().forEach(function (y) {
               legenda.push(formatarData(y.data))
               data.push(y.fechamentoAjustado)
@@ -174,6 +176,7 @@ class investimentoSeguro extends Component {
           .then(res => {
             let legenda = []
             let data = []
+            this.setState( { sugestao3: res[0].investimento.nome } )
             Array.from(res).reverse().forEach(function (y) {
               legenda.push(formatarData(y.data))
               data.push(y.fechamentoAjustado)
@@ -223,6 +226,7 @@ class investimentoSeguro extends Component {
           .then(res => {
             let legenda = []
             let data = []
+            this.setState( { sugestao4: res[0].investimento.nome } )
             Array.from(res).reverse().forEach(function (y) {
               legenda.push(formatarData(y.data))
               data.push(y.fechamentoAjustado)
@@ -285,7 +289,7 @@ class investimentoSeguro extends Component {
         {/*</form>*/}
         <div id="page-wrap">
           <div>
-            <h1 className="welcome">Sugestão de investimento {this.state.nome}</h1>
+            <h1 className="welcome">Sugestão de investimento</h1>
           </div>
         </div>
         <div class="card cardSugestao">
@@ -300,12 +304,17 @@ class investimentoSeguro extends Component {
                 Investimento que os juros se manteve
               </Link>
             </button>
+            <button type="button" class="btn btn-dark ml-3">
+              <Link to={{ pathname: '/sugestaoP', state: { email: this.props.location.state.email, token:this.props.location.state.token } }} className="text">
+                Sugestao Personalizada
+              </Link>
+            </button>
           </div>
           <div class="card-body">
             <div className="row">
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">{this.state.sugestao1}</h5>
                   <div className="card-body">
                     <ManteveChart manteveData={this.state.manteveData}/>
                   </div>
@@ -313,7 +322,7 @@ class investimentoSeguro extends Component {
               </div>
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Investimento mais rentável</h5>
+                  <h5 className="card-header labelgraph">{this.state.sugestao2}</h5>
                   <div className="card-body">
                     <ManteveChart2 manteveData2={this.state.manteveData2}/>
                   </div>
@@ -323,7 +332,7 @@ class investimentoSeguro extends Component {
             <div className="row">
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">{this.state.sugestao3}</h5>
                   <div className="card-body">
                     <ManteveChart3 manteveData3={this.state.manteveData3}/>
                   </div>
@@ -331,7 +340,7 @@ class investimentoSeguro extends Component {
               </div>
               <div className="col-6 graficoSugestao mt-5">
                 <div className="card car graficoSugestao">
-                  <h5 className="card-header labelgraph">Rendimento total</h5>
+                  <h5 className="card-header labelgraph">{this.state.sugestao4}</h5>
                   <div className="card-body">
                     <ManteveChart4 manteveData4={this.state.manteveData4}/>
                   </div>

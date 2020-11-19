@@ -134,7 +134,7 @@ class Configuracoes extends Component {
             return (
                 <Fragment>
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-                    <SideBar perfil={this.state} email={this.props.location.state.email} />
+                    <SideBar perfil={this.state} email={this.props.location.state.email} token={this.props.location.state.token}/>
                     <div className="row">
                         <div className="col-10 graficos mt-5">
                             <div className="card car grafico">

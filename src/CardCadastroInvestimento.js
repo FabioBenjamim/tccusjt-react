@@ -49,7 +49,7 @@ class CardCadastroInvestimento extends Component {
                         id: this.props.stateAntigo.id_acao
                 } 
             }
-            //window.location.reload();
+            window.location.reload();
         }
     }
 
