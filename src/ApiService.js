@@ -4,9 +4,8 @@ import Config from './config';
 const baseURL = Config.url ? Config.url : 'http://localhost:8080';
 
 const ApiService = {
-  cadastraConta: (conta,token) => {
+  cadastraConta: (conta) => {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", token);
     myHeaders.append("Content-Type", "application/json");
     return fetch(`${baseURL}/login`, {
       method: 'POST',
