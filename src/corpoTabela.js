@@ -11,7 +11,7 @@ const TableBody = props =>{
                 <tr key={linha.id}>
                      <th scope="row">{linha.id}</th>
                      <td>{linha.investimento.nome}</td>
-                     <td>R${linha.valor}</td>
+                     <td>${linha.valor}</td>
                      <td>{formatarData(linha.data)}</td>
                      <td>{linha.dataVencimento}</td>
                      <td>{linha.investimento.tipoInvestimento.nome}</td>
@@ -26,7 +26,7 @@ const TableBody = props =>{
        <tr key={linha.id}>
             <th scope="row">{linha.id}</th>
             <td>{linha.investimento.nome}</td>
-            <td>R${linha.valor}</td>
+            <td>${linha.valor}</td>
             <td>{formatarData(linha.data)}</td>
             <td>{formatarData(linha.dataVencimento)}</td>
             <td>{linha.investimento.tipoInvestimento.nome}</td>
